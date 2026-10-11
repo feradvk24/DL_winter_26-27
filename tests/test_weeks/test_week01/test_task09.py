@@ -37,6 +37,15 @@ class TestAddVectorToMatrix(unittest.TestCase):
         # Assert
         np.testing.assert_array_equal(result, expected_result)
 
+    def test_when_shapes_are_incompatible_then_raises_value_error(self):
+        # Arrange
+        matrix = np.array([[1, 2], [3, 4]])
+        vector = np.array([10, 20, 30])  # Incompatible shape
+
+        # Act & Assert
+        with self.assertRaises(ValueError):
+            task09.add_vector_to_matrix(matrix, vector)
+
 
 class TestMain(unittest.TestCase):
     @pytest.fixture(autouse=True)
@@ -57,4 +66,10 @@ class TestMain(unittest.TestCase):
         self.assertRegex(
             output,
             r"Matrix \(\d+, \d+\) \+ column vector \(\d+, 1\):",
+        ) 
+        self.assertRegex(
+            output,
+            r"Matrix \(\d+, \d+\) \+ incompatible "
+            r"vector \(\d+,\):",
         )
+        self.assertIn("operands could not be broadcast together with shapes:", output)
