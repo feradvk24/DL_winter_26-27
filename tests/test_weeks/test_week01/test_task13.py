@@ -1,6 +1,7 @@
 import unittest
 from unittest.mock import patch
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pytest
 
@@ -34,12 +35,37 @@ class TestGenerateSamples(unittest.TestCase):
         np.testing.assert_array_equal(samples, [2.0, 3.0, 10.0])
 
 
+class TestCreateHistograms(unittest.TestCase):
+    def test_when_called_then_plots_each_distribution_on_its_own_axis(self):
+        distributions = (
+            np.array([0.0, 0.5, 1.0]),
+            np.array([-1.0, 1.0]),
+            np.array([0.0, 1.0, 2.0, 3.0]),
+        )
+
+        figure, axes = task13.create_histograms(*distributions)
+        self.addCleanup(plt.close, figure)
+
+        self.assertEqual(len(figure.axes), 3)
+        for ax, title in zip(
+            axes, ("Uniform", "Normal", "Exponential")
+        ):
+            with self.subTest(distribution=title):
+                self.assertEqual(ax.get_title(), title)
+                self.assertEqual(ax.get_xlabel(), "value")
+                self.assertEqual(ax.get_ylabel(), "count")
+
+
 class TestMain(unittest.TestCase):
     @pytest.fixture(autouse=True)
     def inject_fixtures(self, capsys):
         self.capsys = capsys
 
-    def test_when_called_then_print_statistics_for_distributions(self):
+    @patch("weeks.week01.task13.plt.show")
+    @patch("weeks.week01.task13.create_histograms")
+    def test_when_called_then_print_statistics_for_distributions(
+        self, mock_create_histograms, mock_show
+    ):
         # Arrange
         statistic_pattern = (
             r"mean=-?\d+\.\d{4}, "
@@ -56,3 +82,5 @@ class TestMain(unittest.TestCase):
         self.assertRegex(output, rf"Uniform: {statistic_pattern}")
         self.assertRegex(output, rf"Normal: {statistic_pattern}")
         self.assertRegex(output, rf"Exponential: {statistic_pattern}")
+        mock_create_histograms.assert_called_once()
+        mock_show.assert_called_once_with()
