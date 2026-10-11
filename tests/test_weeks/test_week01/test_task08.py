@@ -35,7 +35,7 @@ class TestComputeTwoSums(unittest.TestCase):
         expected_vectorized_sum = 8.0
 
         # Act
-        loop_sum, vectorized_sum = task08.compute_two_sums(arr)
+        loop_sum, vectorized_sum, loop_time, vectorized_time = task08.compute_two_sums(arr)
 
         # Assert
         self.assertAlmostEqual(loop_sum, expected_loop_sum)
@@ -46,10 +46,11 @@ class TestComputeTwoSums(unittest.TestCase):
         arr = np.random.rand(1_000_000)
 
         # Act
-        loop_sum, vectorized_sum = task08.compute_two_sums(arr)
+        loop_sum, vectorized_sum, loop_time, vectorized_time = task08.compute_two_sums(arr)
 
         # Assert
         self.assertAlmostEqual(loop_sum, vectorized_sum)
+
 
 class TestMain(unittest.TestCase):
     @pytest.fixture(autouse=True)
