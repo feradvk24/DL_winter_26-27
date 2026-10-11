@@ -58,3 +58,28 @@ class TestPrintMatrixSlice(unittest.TestCase):
         # Assert
         captured = self.capsys.readouterr()
         self.assertEqual(captured.out.strip(), expected_output)
+
+
+class TestPrintBooleanMaskSelection(unittest.TestCase):
+    @pytest.fixture(autouse=True)
+    def inject_fixtures(self, capsys):
+        self.capsys = capsys
+
+    def test_when_called_then_prints_mask_and_values_greater_than_sixty(self):
+        # Arrange
+        matrix = np.array(
+            [
+                [10, 20, 30, 40],
+                [50, 60, 70, 80],
+                [90, 100, 110, 120],
+            ]
+        )
+        expected_mask_array = np.array([[False, False, False, False], [False, False, True, True], [True, True, True, True]])
+        expected_masked_elements = np.array([70, 80, 90, 100,110, 120])
+        expected_output = f"Boolean mask for more than 60:\n{expected_mask_array}\nValues satisfying the mask: {expected_masked_elements}"
+        # Act
+        task07.print_boolean_mask_selection(matrix)
+
+        # Assert
+        captured = self.capsys.readouterr()
+        self.assertEqual(captured.out.strip(), expected_output)

@@ -12,3 +12,9 @@ def print_row_and_column(matrix: np.ndarray) -> None:
 def print_matrix_slice(matrix: np.ndarray) -> None:
     matrix_slice = matrix[0:2, 1:3]
     print(f"Submatrix:\n{matrix_slice}")
+
+def print_boolean_mask_selection(matrix: np.ndarray) -> None:
+    boolean_mask = matrix > 60
+    selected_elements = matrix[boolean_mask]
+    print(f"Boolean mask for more than 60:\n{boolean_mask}")
+    print(f"Values satisfying the mask: {selected_elements}")
