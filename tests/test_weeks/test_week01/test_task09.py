@@ -52,7 +52,7 @@ class TestMain(unittest.TestCase):
     def inject_fixtures(self, capsys):
         self.capsys = capsys
 
-    def test_when_main_called_then_prints_matrix_plus_scalar(self):
+    def test_when_main_called_then_prints_matrix_plus_scalar_and_vector_operations(self):
         # Act
         task09.main()
 
