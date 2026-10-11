@@ -97,3 +97,15 @@ class TestMain(unittest.TestCase):
             output,
             r"Speedup: \d+\.\d+x",
         )
+        self.assertRegex(
+        output,
+        r"Vectorized mean: -?\d+\.\d+",
+        )
+        self.assertRegex(
+            output,
+            r"Vectorized std: \d+\.\d+",
+        )
+        self.assertRegex(
+            output,
+            r"Vectorized min/max: -?\d+\.\d+ / -?\d+\.\d+",
+        )

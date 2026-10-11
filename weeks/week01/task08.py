@@ -30,7 +30,8 @@ def get_array_stats(arr: np.ndarray) -> tuple[float, float, float, float]:
 def main() -> None:
     large_arr = np.random.rand(1000000)
     loop_sum, vectorized_sum, loop_time, vectorized_time = compute_two_sums(large_arr)
-
+    mean, std_dev, min_val, max_val = get_array_stats(large_arr)
+    
     print(f"Array length: {len(large_arr):,}")
     print(f"Loop sum: {loop_sum:.4f} ({loop_time:.4f}s)")
     print(
@@ -38,3 +39,6 @@ def main() -> None:
         f"({vectorized_time:.4f}s)"
     )
     print(f"Speedup: {loop_time / vectorized_time:.2f}x")
+    print(f"Vectorized mean: {mean:.4f}")
+    print(f"Vectorized std: {std_dev:.4f}")
+    print(f"Vectorized min/max: {min_val:.4f} / {max_val:.4f}")
