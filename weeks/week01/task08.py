@@ -8,5 +8,6 @@ def for_loop_sum(arr: np.ndarray) -> float:
 
 def main() -> None:
     large_arr = np.random.rand(1000000)
-
+    loop_sum = for_loop_sum(large_arr)
     print(f"Array length: {len(large_arr):,}")
+    print(f"Loop sum: {loop_sum}")

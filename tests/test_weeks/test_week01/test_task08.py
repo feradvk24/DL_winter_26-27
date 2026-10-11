@@ -35,3 +35,4 @@ class TestMain(unittest.TestCase):
         # Assert
         output = self.capsys.readouterr().out
         self.assertIn("Array length: 1,000,000", output)
+        self.assertIn("Loop sum:", output)
