@@ -8,3 +8,7 @@ def print_row_and_column(matrix: np.ndarray) -> None:
     third_column = matrix[:, 2]
     print(f"Second row: {second_row}")
     print(f"Third column: {third_column}")
+
+def print_matrix_slice(matrix: np.ndarray) -> None:
+    matrix_slice = matrix[0:2, 1:3]
+    print(f"Submatrix:\n{matrix_slice}")
