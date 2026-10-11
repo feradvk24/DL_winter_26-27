@@ -19,4 +19,12 @@ class TestMain(unittest.TestCase):
         self.assertIn(
             "Generated 50 points for y = 2.0*x + 1.0 + noise",
             output,
-        )   
+        )
+        self.assertRegex(
+            output,
+            r"X range: \((-?\d+\.\d+), (-?\d+\.\d+)\)",
+        )
+        self.assertRegex(
+            output,
+            r"Y range: \((-?\d+\.\d+), (-?\d+\.\d+)\)",
+        )

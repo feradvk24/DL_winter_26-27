@@ -18,3 +18,5 @@ def main() -> None:
     x, y = create_dataset_with_noise(num_points, range_x, noise_range)
 
     print(f"Generated {num_points} points for y = 2.0*x + 1.0 + noise")
+    print(f"X range: ({np.min(x):.2f}, {np.max(x):.2f})")
+    print(f"Y range: ({np.min(y):.2f}, {np.max(y):.2f})")
