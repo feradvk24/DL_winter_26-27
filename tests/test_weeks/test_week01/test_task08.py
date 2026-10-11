@@ -5,6 +5,7 @@ import pytest
 
 from weeks.week01 import task08
 
+
 class TestArraySumWithForLoop(unittest.TestCase):
     @pytest.fixture(autouse=True)
     def inject_fixtures(self, capsys):
@@ -20,3 +21,17 @@ class TestArraySumWithForLoop(unittest.TestCase):
 
         # Assert
         self.assertAlmostEqual(array_sum, expected_sum)
+
+
+class TestMain(unittest.TestCase):
+    @pytest.fixture(autouse=True)
+    def inject_fixtures(self, capsys):
+        self.capsys = capsys
+
+    def test_when_called_then_prints_array_length(self):
+        # Act
+        task08.main()
+
+        # Assert
+        output = self.capsys.readouterr().out
+        self.assertIn("Array length: 1,000,000", output)
