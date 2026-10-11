@@ -9,3 +9,12 @@ def print_one_d_array() -> None:
         f"size={one_d_array.size}"
     )
     print(one_d_array)
+
+def print_two_d_array() -> None:
+    two_d_array = np.arange(1, 7).reshape(2, 3)
+    print(
+        f"2D array (matrix): shape={two_d_array.shape}, "
+        f"dtype={two_d_array.dtype}, ndim={two_d_array.ndim}, "
+        f"size={two_d_array.size}"
+    )
+    print(two_d_array)
