@@ -27,3 +27,8 @@ def print_three_d_array() -> None:
         f"size={three_d_array.size}"
     )
     print(three_d_array)
+
+def main() -> None:
+    print_one_d_array()
+    print_two_d_array()
+    print_three_d_array()

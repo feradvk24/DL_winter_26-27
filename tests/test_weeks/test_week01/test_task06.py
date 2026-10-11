@@ -82,3 +82,33 @@ class TestPrintThreeDArray(unittest.TestCase):
         # Assert
         captured = self.capsys.readouterr()
         self.assertEqual(captured.out.strip(), expected_output)
+
+
+class TestMain(unittest.TestCase):
+    @pytest.fixture(autouse=True)
+    def inject_fixtures(self, capsys):
+        self.capsys = capsys
+
+    def test_when_called_then_prints_output_from_all_array_functions(self):
+        # Arrange
+        task06.print_one_d_array()
+        expected_one_d_output = self.capsys.readouterr().out
+
+        task06.print_two_d_array()
+        expected_two_d_output = self.capsys.readouterr().out
+
+        task06.print_three_d_array()
+        expected_three_d_output = self.capsys.readouterr().out
+
+        expected_output = (
+            expected_one_d_output
+            + expected_two_d_output
+            + expected_three_d_output
+        )
+
+        # Act
+        task06.main()
+        actual_output = self.capsys.readouterr().out
+
+        # Assert
+        self.assertEqual(actual_output, expected_output)
