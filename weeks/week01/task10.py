@@ -10,3 +10,4 @@ def main() -> None:
     print(f"B:\n{matrix_b}")
     print(f"Elementwise:\n{elementwise_product}")
     print(f"Matrix multiplication:\n{matrix_product}")
+    print(f"Transpose of A:\n{matrix_a.T}")

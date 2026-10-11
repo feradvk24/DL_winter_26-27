@@ -24,11 +24,15 @@ class TestMain(unittest.TestCase):
         expected_matrix_product = np.array(
             [[19, 22],[43, 50]]
         )
+        expected_transpose_a = np.array(
+            [[1, 3],[2, 4]]
+        )
         expected_output = (
             f"A:\n{expected_a}\n"
             f"B:\n{expected_b}\n"
             f"Elementwise:\n{expected_elementwise}\n"
-            f"Matrix multiplication:\n{expected_matrix_product}"
+            f"Matrix multiplication:\n{expected_matrix_product}\n"
+            f"Transpose of A:\n{expected_transpose_a}"
         )
 
         # Act
