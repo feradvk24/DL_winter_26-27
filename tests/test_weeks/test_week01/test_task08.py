@@ -52,6 +52,27 @@ class TestComputeTwoSums(unittest.TestCase):
         self.assertAlmostEqual(loop_sum, vectorized_sum)
 
 
+class TestArrayStats(unittest.TestCase):
+    def test_when_called_then_returns_expected_array_stats(self):
+        # Arrange
+        arr = np.array([0.0, 2.0])
+        expected_mean = 1.0
+        expected_std = 1.0
+        expected_min = 0.0
+        expected_max = 2.0
+
+        # Act
+        actual_mean, actual_std, actual_min, actual_max = (
+            task08.get_array_stats(arr)
+        )
+
+        # Assert
+        self.assertAlmostEqual(actual_mean, expected_mean)
+        self.assertAlmostEqual(actual_std, expected_std)
+        self.assertAlmostEqual(actual_min, expected_min)
+        self.assertAlmostEqual(actual_max, expected_max)
+
+
 class TestMain(unittest.TestCase):
     @pytest.fixture(autouse=True)
     def inject_fixtures(self, capsys):

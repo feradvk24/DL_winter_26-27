@@ -19,6 +19,14 @@ def compute_two_sums(arr: np.ndarray) -> tuple[float, float, float, float]:
 
     return loop_sum, vectorized_sum, loop_time, vectorized_time
 
+def get_array_stats(arr: np.ndarray) -> tuple[float, float, float, float]:
+    mean = np.mean(arr)
+    std_dev = np.std(arr)
+    min_val = np.min(arr)
+    max_val = np.max(arr)
+
+    return mean, std_dev, min_val, max_val
+
 def main() -> None:
     large_arr = np.random.rand(1000000)
     loop_sum, vectorized_sum, loop_time, vectorized_time = compute_two_sums(large_arr)
