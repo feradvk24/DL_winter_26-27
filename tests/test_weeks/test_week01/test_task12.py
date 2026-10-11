@@ -44,7 +44,28 @@ class TestCreatePlot(unittest.TestCase):
 
         # Act
         figure, axes = task12.create_plot(x, sin_values, cos_values, hist_data)
+        line_axis, histogram_axis = axes
+        
+        # Assert
         self.assertEqual(len(axes), 2)
+        self.assertEqual(len(line_axis.lines), 2)
+        self.assertEqual(
+            [line.get_label() for line in line_axis.lines],
+            ["sin(x)", "cos(x)"],
+        )
+        self.assertIsNotNone(line_axis.get_legend())
+
+        self.assertEqual(line_axis.get_title(), "Line Plot")
+        self.assertEqual(line_axis.get_xlabel(), "x")
+        self.assertEqual(line_axis.get_ylabel(), "y")
+
+        self.assertEqual(
+            histogram_axis.get_title(),
+            "Histogram",
+        )
+        self.assertEqual(histogram_axis.get_xlabel(), "value")
+        self.assertEqual(histogram_axis.get_ylabel(), "count")
+
 
 class TestMain(unittest.TestCase):
     @pytest.fixture(autouse=True)

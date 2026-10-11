@@ -10,7 +10,24 @@ def create_plot_data(samples: int) -> tuple[np.ndarray, np.ndarray, np.ndarray, 
     return x, sin_values, cos_values, hist_data
 
 def create_plot(x, sin_values, cos_values, hist_data):
-    figure, axes = plt.subplots(2, 1, figsize=(10, 8))
+    figure, axes = plt.subplots(1, 2, figsize=(10, 8))
+    line_axis, histogram_axis = axes
+
+    line_axis.plot(x, sin_values, label="sin(x)", color="blue")
+    line_axis.plot(x, cos_values, label="cos(x)", color="orange")
+    line_axis.legend()
+    line_axis.set_title("Line Plot")
+    line_axis.set_xlabel("x")
+    line_axis.set_ylabel("y")
+    line_axis.grid(True)
+
+    histogram_axis.hist(hist_data)
+    histogram_axis.set_title("Histogram")
+    histogram_axis.set_xlabel("value")
+    histogram_axis.set_ylabel("count")
+    histogram_axis.grid(True)
+
+    figure.tight_layout()
 
     return figure, axes
 
