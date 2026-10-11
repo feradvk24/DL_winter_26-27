@@ -24,6 +24,20 @@ class TestScalarAddition(unittest.TestCase):
         np.testing.assert_array_equal(result, expected_result)
 
 
+class TestAddRowVectorToMatrix(unittest.TestCase):
+    def test_when_called_then_returns_matrix_with_added_row_vector(self):
+        # Arrange
+        matrix = np.array([[1, 2], [3, 4]])
+        row_vector = np.array([10, 20])
+        expected_result = np.array([[11, 22], [13, 24]])
+
+        # Act
+        result = task09.add_row_vector_to_matrix(matrix, row_vector)
+
+        # Assert
+        np.testing.assert_array_equal(result, expected_result)
+
+
 class TestMain(unittest.TestCase):
     @pytest.fixture(autouse=True)
     def inject_fixtures(self, capsys):
@@ -34,5 +48,9 @@ class TestMain(unittest.TestCase):
         task09.main()
 
         # Assert
-        captured = self.capsys.readouterr()
-        self.assertRegex(captured.out, r"Matrix \+ scalar \(\d+\):")
+        output = self.capsys.readouterr().out
+        self.assertRegex(output, r"Matrix \+ scalar \(\d+\):")
+        self.assertRegex(
+            output,
+            r"Matrix \(\d+, \d+\) \+ row vector \(\d+,\):",
+        )
