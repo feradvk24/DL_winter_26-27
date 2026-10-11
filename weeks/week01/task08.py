@@ -10,12 +10,12 @@ def for_loop_sum(arr: np.ndarray) -> float:
 
 def compute_two_sums(arr: np.ndarray) -> tuple[float, float, float, float]:
     # Measure loop sum and time
-    start_time = time.time()
+    start_time = time.perf_counter()
     loop_sum = for_loop_sum(arr)
-    loop_time = time.time() - start_time
-    start_time = time.time()
+    loop_time = time.perf_counter() - start_time
+    start_time = time.perf_counter()
     vectorized_sum = np.sum(arr)
-    vectorized_time = time.time() - start_time
+    vectorized_time = time.perf_counter() - start_time
 
     return loop_sum, vectorized_sum, loop_time, vectorized_time
 
