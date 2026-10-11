@@ -17,16 +17,16 @@ class TestMinMaxNormalize(unittest.TestCase):
         # Assert
         np.testing.assert_allclose(actual, expected)
 
-#     def test_when_array_is_constant_then_returns_zeros(self):
-#         # Arrange
-#         values = np.array([7.0, 7.0, 7.0])
-#         expected = np.array([0.0, 0.0, 0.0])
+    def test_when_array_is_constant_then_returns_zeros(self):
+        # Arrange
+        values = np.array([7.0, 7.0, 7.0])
+        expected = np.array([0.0, 0.0, 0.0])
 
-#         # Act
-#         actual = functional.min_max_normalize(values)
+        # Act
+        actual = functional.min_max_normalize(values)
 
-#         # Assert
-#         np.testing.assert_allclose(actual, expected)
+        # Assert
+        np.testing.assert_allclose(actual, expected)
 
 
 # class TestStandardize(unittest.TestCase):
