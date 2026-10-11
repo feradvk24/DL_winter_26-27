@@ -83,3 +83,35 @@ class TestPrintBooleanMaskSelection(unittest.TestCase):
         # Assert
         captured = self.capsys.readouterr()
         self.assertEqual(captured.out.strip(), expected_output)
+
+
+class TestMain(unittest.TestCase):
+    @pytest.fixture(autouse=True)
+    def inject_fixtures(self, capsys):
+        self.capsys = capsys
+
+    def test_when_called_then_prints_output_from_all_matrix_functions(self):
+        # Arrange
+        matrix = task07.build_matrix()
+
+        task07.print_row_and_column(matrix)
+        expected_row_and_column_output = self.capsys.readouterr().out
+
+        task07.print_matrix_slice(matrix)
+        expected_matrix_slice_output = self.capsys.readouterr().out
+
+        task07.print_boolean_mask_selection(matrix)
+        expected_boolean_mask_output = self.capsys.readouterr().out
+
+        expected_output = (
+            expected_row_and_column_output
+            + expected_matrix_slice_output
+            + expected_boolean_mask_output
+        )
+
+        # Act
+        task07.main()
+        actual_output = self.capsys.readouterr().out
+
+        # Assert
+        self.assertEqual(actual_output, expected_output)

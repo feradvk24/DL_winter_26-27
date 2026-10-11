@@ -18,3 +18,9 @@ def print_boolean_mask_selection(matrix: np.ndarray) -> None:
     selected_elements = matrix[boolean_mask]
     print(f"Boolean mask for more than 60:\n{boolean_mask}")
     print(f"Values satisfying the mask: {selected_elements}")
+
+def main() -> None:
+    matrix = build_matrix()
+    print_row_and_column(matrix)
+    print_matrix_slice(matrix)
+    print_boolean_mask_selection(matrix)
