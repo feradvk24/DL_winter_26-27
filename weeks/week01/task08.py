@@ -29,3 +29,4 @@ def main() -> None:
         f"Vectorized sum: {vectorized_sum:.4f} "
         f"({vectorized_time:.4f}s)"
     )
+    print(f"Speedup: {loop_time / vectorized_time:.2f}x")

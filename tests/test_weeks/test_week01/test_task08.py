@@ -72,3 +72,7 @@ class TestMain(unittest.TestCase):
             output,
             r"Vectorized sum: -?\d+\.\d+ \(\d+\.\d+s\)",
         )
+        self.assertRegex(
+            output,
+            r"Speedup: \d+\.\d+x",
+        )
