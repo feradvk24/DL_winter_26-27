@@ -56,3 +56,29 @@ class TestPrintTwoDArray(unittest.TestCase):
         # Assert
         captured = self.capsys.readouterr()
         self.assertEqual(captured.out.strip(), expected_output)
+
+
+class TestPrintThreeDArray(unittest.TestCase):
+    @pytest.fixture(autouse=True)
+    def inject_fixtures(self, capsys):
+        self.capsys = capsys
+
+    def test_when_called_then_prints_array_properties(self):
+        # Arrange
+        expected_array = np.arange(24).reshape(2, 3, 4)
+        shape = expected_array.shape
+        dtype = expected_array.dtype
+        ndim = expected_array.ndim
+        size = expected_array.size
+        expected_output = (
+            f"3D array (volume): shape={shape}, dtype={dtype}, "
+            f"ndim={ndim}, size={size}\n"
+            f"{expected_array}"
+        )
+
+        # Act
+        task06.print_three_d_array()
+
+        # Assert
+        captured = self.capsys.readouterr()
+        self.assertEqual(captured.out.strip(), expected_output)

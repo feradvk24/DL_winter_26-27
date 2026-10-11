@@ -18,3 +18,12 @@ def print_two_d_array() -> None:
         f"size={two_d_array.size}"
     )
     print(two_d_array)
+
+def print_three_d_array() -> None:
+    three_d_array = np.arange(24).reshape(2, 3, 4)
+    print(
+        f"3D array (volume): shape={three_d_array.shape}, "
+        f"dtype={three_d_array.dtype}, ndim={three_d_array.ndim}, "
+        f"size={three_d_array.size}"
+    )
+    print(three_d_array)
