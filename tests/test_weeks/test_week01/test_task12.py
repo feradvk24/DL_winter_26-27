@@ -7,6 +7,34 @@ import pytest
 from weeks.week01 import task12
 
 
+class TestCreatePlotData(unittest.TestCase):
+    def test_when_called_then_returns_correct_length(self):
+        # Arrange
+        samples = 1000
+
+        # Act
+        x, sin_values, cos_values, hist_data = task12.create_plot_data(samples)
+
+        # Assert
+        self.assertEqual(len(x), samples)
+        self.assertEqual(len(sin_values), samples)
+        self.assertEqual(len(cos_values), samples)
+        self.assertEqual(len(hist_data), samples)
+
+    def test_when_called_then_returns_correct_sin_and_cos_ranges(self):
+        # Arrange
+        samples = 1000
+
+        # Act
+        _, sin_values, cos_values, _ = task12.create_plot_data(samples)
+
+        # Assert
+        self.assertAlmostEqual(np.min(sin_values), -1.0, places=4)
+        self.assertAlmostEqual(np.max(sin_values), 1.0, places=4)
+        self.assertAlmostEqual(np.min(cos_values), -1.0, places=4)
+        self.assertAlmostEqual(np.max(cos_values), 1.0, places=4)
+
+
 class TestMain(unittest.TestCase):
     @pytest.fixture(autouse=True)
     def inject_fixtures(self, capsys):
