@@ -29,19 +29,19 @@ class TestMinMaxNormalize(unittest.TestCase):
         np.testing.assert_allclose(actual, expected)
 
 
-# class TestStandardize(unittest.TestCase):
-#     def test_when_array_has_nonzero_mean_then_centers_and_scales_it(self):
-#         # Arrange
-#         values = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
-#         expected_mean = 0.0
-#         expected_std = 1.0
+class TestStandardize(unittest.TestCase):
+    def test_when_array_has_nonzero_mean_then_centers_and_scales_it(self):
+        # Arrange
+        values = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
+        expected_mean = 0.0
+        expected_std = 1.0
 
-#         # Act
-#         actual = functional.standardize(values)
+        # Act
+        actual = functional.standardize(values)
 
-#         # Assert
-#         self.assertAlmostEqual(actual.mean(), expected_mean)
-#         self.assertAlmostEqual(actual.std(), expected_std)
+        # Assert
+        self.assertAlmostEqual(actual.mean(), expected_mean)
+        self.assertAlmostEqual(actual.std(), expected_std)
 
 #     def test_when_array_is_constant_then_returns_zeros(self):
 #         # Arrange

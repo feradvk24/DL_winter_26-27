@@ -9,3 +9,9 @@ def min_max_normalize(values: np.ndarray) -> np.ndarray:
         return np.zeros_like(values, dtype=float)
 
     return (values - minimum) / (maximum - minimum)
+
+def standardize(values: np.ndarray) -> np.ndarray:
+    mean = values.mean()
+    std = values.std()
+
+    return (values - mean) / std
