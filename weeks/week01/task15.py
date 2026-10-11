@@ -13,8 +13,21 @@ def print_tensor_info(tensor: torch.Tensor) -> None:
     print(f"dtype={tensor.dtype}, shape={tensor.shape}, device={tensor.device}")
 
 
+def move_tensor_to_device(tensor: torch.Tensor) -> torch.Tensor:
+    if torch.backends.mps.is_available():
+        device = "mps"
+    else:
+        device = "cpu"
+
+    print(f"Selected device: {device}")
+    tensor = tensor.to(device)
+    print(f"Tensor moved to device: {tensor.device}, dtype={tensor.dtype}")
+    return tensor
+
+
 def main() -> None:
     arr = np.array([[1, 2, 3], [4, 5, 6]], dtype=np.float32)
     print_np_array_info(arr)
     tensor = torch.from_numpy(arr)
     print_tensor_info(tensor)
+    tensor = move_tensor_to_device(tensor)
