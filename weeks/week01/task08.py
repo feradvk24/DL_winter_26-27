@@ -24,5 +24,8 @@ def main() -> None:
     loop_sum, vectorized_sum, loop_time, vectorized_time = compute_two_sums(large_arr)
 
     print(f"Array length: {len(large_arr):,}")
-    print(f"Loop sum: {loop_sum}")
-    print(f"Vectorized sum: {vectorized_sum}")
+    print(f"Loop sum: {loop_sum:.4f} ({loop_time:.4f}s)")
+    print(
+        f"Vectorized sum: {vectorized_sum:.4f} "
+        f"({vectorized_time:.4f}s)"
+    )

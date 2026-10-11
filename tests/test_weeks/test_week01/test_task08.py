@@ -64,5 +64,11 @@ class TestMain(unittest.TestCase):
         # Assert
         output = self.capsys.readouterr().out
         self.assertIn("Array length: 1,000,000", output)
-        self.assertIn("Loop sum:", output)
-        self.assertIn("Vectorized sum:", output)
+        self.assertRegex(
+            output,
+            r"Loop sum: -?\d+\.\d+ \(\d+\.\d+s\)",
+        )
+        self.assertRegex(
+            output,
+            r"Vectorized sum: -?\d+\.\d+ \(\d+\.\d+s\)",
+        )
