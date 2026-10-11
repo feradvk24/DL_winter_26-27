@@ -14,4 +14,7 @@ def standardize(values: np.ndarray) -> np.ndarray:
     mean = values.mean()
     std = values.std()
 
+    if std == 0:
+        return np.zeros_like(values, dtype=float)
+
     return (values - mean) / std

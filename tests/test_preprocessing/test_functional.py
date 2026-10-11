@@ -43,13 +43,13 @@ class TestStandardize(unittest.TestCase):
         self.assertAlmostEqual(actual.mean(), expected_mean)
         self.assertAlmostEqual(actual.std(), expected_std)
 
-#     def test_when_array_is_constant_then_returns_zeros(self):
-#         # Arrange
-#         values = np.array([7.0, 7.0, 7.0])
-#         expected = np.array([0.0, 0.0, 0.0])
+    def test_when_array_is_constant_then_returns_zeros(self):
+        # Arrange
+        values = np.array([7.0, 7.0, 7.0])
+        expected = np.array([0.0, 0.0, 0.0])
 
-#         # Act
-#         actual = functional.standardize(values)
+        # Act
+        actual = functional.standardize(values)
 
-#         # Assert
-#         np.testing.assert_allclose(actual, expected)
+        # Assert
+        np.testing.assert_allclose(actual, expected)
