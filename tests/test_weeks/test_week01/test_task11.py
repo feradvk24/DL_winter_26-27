@@ -34,7 +34,8 @@ class TestMain(unittest.TestCase):
     def inject_fixtures(self, capsys):
         self.capsys = capsys
 
-    def test_when_called_then_prints_dataset_summary_and_shows_plot(self):
+    @patch("weeks.week01.task11.plot_dataset")
+    def test_when_called_then_prints_dataset_summary_and_shows_plot(self, mock_plot_dataset):
         # Arrange
         task11.main()
 
@@ -51,3 +52,5 @@ class TestMain(unittest.TestCase):
             output,
             r"Y range: \((-?\d+\.\d+), (-?\d+\.\d+)\)",
         )
+
+        mock_plot_dataset.assert_called_once()

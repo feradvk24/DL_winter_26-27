@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 
 def create_dataset_with_noise(
@@ -10,6 +11,13 @@ def create_dataset_with_noise(
     y = 2.0 * x + 1.0 + noise
     return x, y
 
+def plot_dataset(x: np.ndarray, y: np.ndarray) -> None:
+    plt.scatter(x, y)
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.title("Synthetic linear data with noise")
+    plt.show()
+
 def main() -> None:
     num_points = 50
     range_x = (0, 10)
@@ -20,3 +28,5 @@ def main() -> None:
     print(f"Generated {num_points} points for y = 2.0*x + 1.0 + noise")
     print(f"X range: ({np.min(x):.2f}, {np.max(x):.2f})")
     print(f"Y range: ({np.min(y):.2f}, {np.max(y):.2f})")
+
+    plot_dataset(x, y)
