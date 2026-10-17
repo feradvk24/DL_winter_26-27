@@ -1,5 +1,5 @@
 import numpy as np
 
 
-def mae(y_true, y_pred):
+def mae(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     return np.sum(np.abs(y_pred - y_true)) / len(y_true)
