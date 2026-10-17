@@ -1,7 +1,7 @@
 import numpy as np
 
-from dl_lib.losses.functional import mse
-from dl_lib.losses.functional import mae
+from dl_lib.losses.functional import mae, mse
+
 
 def main():
     y_true = np.array([3, 5, 7, 9])
