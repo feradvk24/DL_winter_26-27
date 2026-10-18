@@ -11,3 +11,8 @@ def confusion_matrix(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, int]:
     fn = ((y_true == 1) & (y_pred == 0)).sum()
 
     return {"tp": tp, "tn": tn, "fp": fp, "fn": fn}
+
+def accuracy(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+    metrics = confusion_matrix(y_true, y_pred)
+
+    return (metrics["tp"] + metrics["tn"]) / sum(list(metrics.values()))

@@ -44,21 +44,21 @@ class TestConfusionMatrix(unittest.TestCase):
 
         # Assert
         self.assertEqual(actual, expected)
-#
-#
-# class TestAccuracy(unittest.TestCase):
-#
-#     def test_when_called_then_matches_hand_calculation(self):
-#         # Arrange
-#         y_true = np.array([1, 0, 1, 0, 1])
-#         y_pred = np.array([1, 0, 0, 1, 1])
-#         expected = 3 / 5
-#
-#         # Act
-#         actual = functional.accuracy(y_true, y_pred)
-#
-#         # Assert
-#         self.assertAlmostEqual(actual, expected)
+
+
+class TestAccuracy(unittest.TestCase):
+
+    def test_when_called_then_matches_hand_calculation(self):
+        # Arrange
+        y_true = np.array([1, 0, 1, 0, 1])
+        y_pred = np.array([1, 0, 0, 1, 1])
+        expected = 3 / 5
+
+        # Act
+        actual = functional.accuracy(y_true, y_pred)
+
+        # Assert
+        self.assertAlmostEqual(actual, expected)
 #
 #     def test_when_dataset_is_imbalanced_and_all_predicted_negative_then_accuracy_is_still_high(
 #             self):
