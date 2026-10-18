@@ -59,20 +59,20 @@ class TestAccuracy(unittest.TestCase):
 
         # Assert
         self.assertAlmostEqual(actual, expected)
-#
-#     def test_when_dataset_is_imbalanced_and_all_predicted_negative_then_accuracy_is_still_high(
-#             self):
-#         # Arrange
-#         y_true = np.array([0] * 990 + [1] * 10)
-#         y_pred = np.zeros(1000, dtype=int)
-#         expected = 0.99
-#
-#         # Act
-#         actual = functional.accuracy(y_true, y_pred)
-#
-#         # Assert
-#         self.assertAlmostEqual(actual, expected)
-#
+
+    def test_when_dataset_is_imbalanced_and_all_predicted_negative_then_accuracy_is_still_high(
+            self):
+        # Arrange
+        y_true = np.array([0] * 990 + [1] * 10)
+        y_pred = np.zeros(1000, dtype=int)
+        expected = 0.99
+
+        # Act
+        actual = functional.accuracy(y_true, y_pred)
+
+        # Assert
+        self.assertAlmostEqual(actual, expected)
+
 #
 # class TestPrecision(unittest.TestCase):
 #
