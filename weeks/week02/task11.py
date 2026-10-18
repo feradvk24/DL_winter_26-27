@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import torch
 
 from dl_lib.activations.functional import relu, sigmoid, tanh
 
@@ -18,6 +19,15 @@ def main() -> None:
     print(f"At x=-5: sigmoid={sigmoid_values[idx_minus_five]:.4f}, relu={relu_values[idx_minus_five]:.4f}, tanh={tanh_values[idx_minus_five]:.4f}")
     print(f"At x=0: sigmoid={sigmoid_values[idx_zero]:.4f}, relu={relu_values[idx_zero]:.4f}, tanh={tanh_values[idx_zero]:.4f}")
     print(f"At x=5: sigmoid={sigmoid_values[idx_five]:.4f}, relu={relu_values[idx_five]:.4f}, tanh={tanh_values[idx_five]:.4f}")
+
+    x_torch = torch.from_numpy(x)
+    sigmoid_torch = torch.sigmoid(x_torch)
+    relu_torch = torch.relu(x_torch)
+    tanh_torch = torch.tanh(x_torch)
+
+    print(f"PyTorch at x=-5: sigmoid={sigmoid_torch[idx_minus_five]:.4f}, relu={relu_torch[idx_minus_five]:.4f}, tanh={tanh_torch[idx_minus_five]:.4f}")
+    print(f"PyTorch at x=0: sigmoid={sigmoid_torch[idx_zero]:.4f}, relu={relu_torch[idx_zero]:.4f}, tanh={tanh_torch[idx_zero]:.4f}")
+    print(f"PyTorch at x=5: sigmoid={sigmoid_torch[idx_five]:.4f}, relu={relu_torch[idx_five]:.4f}, tanh={tanh_torch[idx_five]:.4f}")
 
     plt.plot(x, sigmoid_values, label="Sigmoid")
     plt.plot(x, relu_values, label="ReLU")
