@@ -87,20 +87,20 @@ class TestPrecision(unittest.TestCase):
 
         # Assert
         self.assertAlmostEqual(actual, expected)
-#
-#     def test_when_no_positive_predictions_then_returns_zero(self):
-#         # Arrange
-#         y_true = np.array([1, 0, 1])
-#         y_pred = np.array([0, 0, 0])
-#         expected = 0.0
-#
-#         # Act
-#         actual = functional.precision(y_true, y_pred)
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
-#
+
+    def test_when_no_positive_predictions_then_returns_zero(self):
+        # Arrange
+        y_true = np.array([1, 0, 1])
+        y_pred = np.array([0, 0, 0])
+        expected = 0.0
+
+        # Act
+        actual = functional.precision(y_true, y_pred)
+
+        # Assert
+        self.assertEqual(actual, expected)
+
+
 # class TestRecall(unittest.TestCase):
 #
 #     def test_when_called_then_matches_hand_calculation(self):
