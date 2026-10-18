@@ -16,3 +16,8 @@ def accuracy(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     metrics = confusion_matrix(y_true, y_pred)
 
     return (metrics["tp"] + metrics["tn"]) / sum(list(metrics.values()))
+
+def precision(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+    metrics = confusion_matrix(y_true, y_pred)
+
+    return metrics["tp"] / (metrics["tp"] + metrics["fp"])
