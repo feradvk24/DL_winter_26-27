@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 
 from dl_lib.metrics.functional import apply_threshold, precision, recall
@@ -23,9 +24,17 @@ def main() -> None:
         precisions.append(precision(y_true, classified))
         recalls.append(recall(y_true, classified))
 
-
     print_metrics(2, precisions, recalls, threshold_sweep)
     print_metrics(5, precisions, recalls, threshold_sweep)
     print_metrics(10, precisions, recalls, threshold_sweep)
     print_metrics(12, precisions, recalls, threshold_sweep)
     print_metrics(18, precisions, recalls, threshold_sweep)
+
+    plt.plot(threshold_sweep, precisions, label="Precision", marker="o")
+    plt.plot(threshold_sweep, recalls, label="Recall", marker="o")
+    plt.xlabel("Threshold")
+    plt.ylabel("Score")
+    plt.title("Precision and recall vs. threshold")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
