@@ -120,19 +120,19 @@ class TestTanh(unittest.TestCase):
         # Assert
         np.testing.assert_allclose(actual, expected)
 
-#
-# class TestSoftmax(unittest.TestCase):
-#
-#     def test_when_called_then_probabilities_sum_to_one(self):
-#         # Arrange
-#         x = np.array([1.0, 2.0, 3.0])
-#         expected = 1.0
-#
-#         # Act
-#         actual = functional.softmax(x).sum()
-#
-#         # Assert
-#         self.assertAlmostEqual(actual, expected)
+
+class TestSoftmax(unittest.TestCase):
+
+    def test_when_called_then_probabilities_sum_to_one(self):
+        # Arrange
+        x = np.array([1.0, 2.0, 3.0])
+        expected = 1.0
+
+        # Act
+        actual = functional.softmax(x).sum()
+
+        # Assert
+        self.assertAlmostEqual(actual, expected)
 #
 #     def test_when_input_has_large_values_then_does_not_overflow(self):
 #         # Arrange
