@@ -101,32 +101,32 @@ class TestPrecision(unittest.TestCase):
         self.assertEqual(actual, expected)
 
 
-# class TestRecall(unittest.TestCase):
-#
-#     def test_when_called_then_matches_hand_calculation(self):
-#         # Arrange
-#         y_true = np.array([1, 0, 1, 0, 1])
-#         y_pred = np.array([1, 0, 0, 1, 1])
-#         expected = 2 / 3
-#
-#         # Act
-#         actual = functional.recall(y_true, y_pred)
-#
-#         # Assert
-#         self.assertAlmostEqual(actual, expected)
-#
-#     def test_when_no_actual_positives_then_returns_zero(self):
-#         # Arrange
-#         y_true = np.array([0, 0, 0])
-#         y_pred = np.array([1, 0, 1])
-#         expected = 0.0
-#
-#         # Act
-#         actual = functional.recall(y_true, y_pred)
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
+class TestRecall(unittest.TestCase):
+
+    def test_when_called_then_matches_hand_calculation(self):
+        # Arrange
+        y_true = np.array([1, 0, 1, 0, 1])
+        y_pred = np.array([1, 0, 0, 1, 1])
+        expected = 2 / 3
+
+        # Act
+        actual = functional.recall(y_true, y_pred)
+
+        # Assert
+        self.assertAlmostEqual(actual, expected)
+
+    def test_when_no_actual_positives_then_returns_zero(self):
+        # Arrange
+        y_true = np.array([0, 0, 0])
+        y_pred = np.array([1, 0, 1])
+        expected = 0.0
+
+        # Act
+        actual = functional.recall(y_true, y_pred)
+
+        # Assert
+        self.assertEqual(actual, expected)
+
 #
 # class TestF1Score(unittest.TestCase):
 #

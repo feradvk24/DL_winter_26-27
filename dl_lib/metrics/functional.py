@@ -24,3 +24,11 @@ def precision(y_true: np.ndarray, y_pred: np.ndarray) -> float:
         return 0
 
     return metrics["tp"] / (metrics["tp"] + metrics["fp"])
+
+def recall(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+    metrics = confusion_matrix(y_true, y_pred)
+
+    if metrics["tp"] == 0:
+        return 0
+
+    return metrics["tp"] / (metrics["tp"] + metrics["fn"])
