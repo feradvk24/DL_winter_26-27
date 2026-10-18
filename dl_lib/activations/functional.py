@@ -11,5 +11,6 @@ def tanh(x: np.ndarray) -> np.ndarray:
     return np.tanh(x)
 
 def softmax(x: np.ndarray) -> np.ndarray:
-    exp_x = np.exp(x)
+    shifted_x = x - np.max(x)
+    exp_x = np.exp(shifted_x)
     return exp_x / np.sum(exp_x)
