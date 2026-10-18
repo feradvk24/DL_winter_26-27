@@ -32,3 +32,12 @@ def recall(y_true: np.ndarray, y_pred: np.ndarray) -> float:
         return 0
 
     return metrics["tp"] / (metrics["tp"] + metrics["fn"])
+
+def f1_score(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+    precision_score = precision(y_true, y_pred)
+    recall_score = precision(y_true, y_pred)
+
+    if precision_score == 0 and recall_score == 0:
+        return 0
+
+    return 2 * precision_score * recall_score / (precision_score + recall_score)

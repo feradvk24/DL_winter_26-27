@@ -127,31 +127,31 @@ class TestRecall(unittest.TestCase):
         # Assert
         self.assertEqual(actual, expected)
 
-#
-# class TestF1Score(unittest.TestCase):
-#
-#     def test_when_called_then_matches_harmonic_mean_of_precision_and_recall(self):
-#         # Arrange
-#         y_true = np.array([1, 0, 1, 0, 1])
-#         y_pred = np.array([1, 0, 0, 1, 1])
-#         p = functional.precision(y_true, y_pred)
-#         r = functional.recall(y_true, y_pred)
-#         expected = 2 * p * r / (p + r)
-#
-#         # Act
-#         actual = functional.f1_score(y_true, y_pred)
-#
-#         # Assert
-#         self.assertAlmostEqual(actual, expected)
-#
-#     def test_when_precision_and_recall_are_both_zero_then_returns_zero(self):
-#         # Arrange
-#         y_true = np.array([0, 0, 0])
-#         y_pred = np.array([0, 0, 0])
-#         expected = 0.0
-#
-#         # Act
-#         actual = functional.f1_score(y_true, y_pred)
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
+
+class TestF1Score(unittest.TestCase):
+
+    def test_when_called_then_matches_harmonic_mean_of_precision_and_recall(self):
+        # Arrange
+        y_true = np.array([1, 0, 1, 0, 1])
+        y_pred = np.array([1, 0, 0, 1, 1])
+        p = functional.precision(y_true, y_pred)
+        r = functional.recall(y_true, y_pred)
+        expected = 2 * p * r / (p + r)
+
+        # Act
+        actual = functional.f1_score(y_true, y_pred)
+
+        # Assert
+        self.assertAlmostEqual(actual, expected)
+
+    def test_when_precision_and_recall_are_both_zero_then_returns_zero(self):
+        # Arrange
+        y_true = np.array([0, 0, 0])
+        y_pred = np.array([0, 0, 0])
+        expected = 0.0
+
+        # Act
+        actual = functional.f1_score(y_true, y_pred)
+
+        # Assert
+        self.assertEqual(actual, expected)
