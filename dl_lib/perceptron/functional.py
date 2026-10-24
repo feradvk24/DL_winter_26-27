@@ -12,7 +12,7 @@ def numerical_gradient(loss_fn: Callable, params: np.ndarray):
     h = 1e-5
     gradient = np.zeros_like(params, dtype=float)
 
-    for i in range(len(params)):
+    for i in np.ndindex(params.shape):
         plus = params.astype(float, copy=True)
         minus = params.astype(float, copy=True)
 
