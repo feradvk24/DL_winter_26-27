@@ -193,20 +193,20 @@ class TestNumericalGradient(unittest.TestCase):
         np.testing.assert_array_equal(params, expected)
 
 
-# class TestGradientDescentStep(unittest.TestCase):
-#     def test_when_called_then_moves_params_against_the_gradient(self):
-#         # Arrange
-#         params = np.array([1.0, 1.0])
-#         gradient = np.array([2.0, -2.0])
-#         learning_rate = 0.1
-#         expected = np.array([0.8, 1.2])
-#
-#         # Act
-#         actual = functional.gradient_descent_step(params, gradient, learning_rate)
-#
-#         # Assert
-#         np.testing.assert_allclose(actual, expected)
-#
+class TestGradientDescentStep(unittest.TestCase):
+    def test_when_called_then_moves_params_against_the_gradient(self):
+        # Arrange
+        params = np.array([1.0, 1.0])
+        gradient = np.array([2.0, -2.0])
+        learning_rate = 0.1
+        expected = np.array([0.8, 1.2])
+
+        # Act
+        actual = functional.gradient_descent_step(params, gradient, learning_rate)
+
+        # Assert
+        np.testing.assert_allclose(actual, expected)
+
 #
 # class TestAnalyticalGradient(unittest.TestCase):
 #     def test_when_no_activation_then_matches_the_closed_form_gradient(self):

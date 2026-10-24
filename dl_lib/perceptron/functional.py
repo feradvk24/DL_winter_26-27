@@ -22,3 +22,6 @@ def numerical_gradient(loss_fn: Callable, params: np.ndarray):
         gradient[i] = (loss_fn(plus) - loss_fn(minus)) / (2 * h)
 
     return gradient
+
+def gradient_descent_step(params: np.ndarray, gradient: np.ndarray, learning_rate: float) -> np.ndarray:
+    return params - learning_rate * gradient
