@@ -21,7 +21,7 @@ class Perceptron:
         self.bias = 0.0
         if use_bias:
             rng = np.random.default_rng(seed)
-            rng.uniform(low, high)
+            self.bias = float(rng.uniform(low, high))
 
     def forward(self, n_inputs):
         return forward(n_inputs, self.weights, self.bias, self.activation)
