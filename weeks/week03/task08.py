@@ -1,7 +1,9 @@
+import matplotlib.pyplot as plt
+
+from dl_lib.activations.functional import sigmoid
 from dl_lib.perceptron.datasets import and_dataset
 from dl_lib.perceptron.perceptron import Perceptron
 from dl_lib.perceptron.training import train
-from dl_lib.activations.functional import sigmoid
 
 
 def main() -> None:
@@ -21,7 +23,7 @@ def main() -> None:
         dataset,
         learning_rate=0.1,
         epochs=100_000,
-        log_every=10_000,
+        log_every=1,
     )
 
     model_with_activation = Perceptron(
@@ -38,7 +40,7 @@ def main() -> None:
         dataset,
         learning_rate=0.1,
         epochs=100_000,
-        log_every=10_000,
+        log_every=1,
     )
 
     print(f"Without sigmoid - final loss: {history[-1][1]}")
@@ -55,3 +57,17 @@ def main() -> None:
             f"AND({x[0]:.0f}, {x[1]:.0f}) = {target:.0f} "
             f"-> predicted {prediction:.6f}"
         )
+
+    epochs, losses = zip(*history)
+    sigmoid_epochs, sigmoid_losses = zip(*history_with_activation)
+
+    plt.figure()
+    plt.plot(epochs, losses, label="no activation")
+    plt.plot(sigmoid_epochs, sigmoid_losses, label="sigmoid")
+    plt.xlabel("Epoch")
+    plt.ylabel("MSE Loss")
+    plt.title("AND gate - loss over 100,000 epochs")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
