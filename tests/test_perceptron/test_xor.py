@@ -1,11 +1,11 @@
-# import unittest
-# from functools import partial
-#
-# import numpy as np
+import unittest
+from functools import partial
+
+import numpy as np
 #
 # from dl_lib.losses import functional as losses_functional
 # from dl_lib.perceptron import datasets, functional
-# from dl_lib.perceptron.xor import Xor, forward
+from dl_lib.perceptron.xor import Xor
 #
 #
 # def _loss_given(
@@ -38,17 +38,17 @@
 #     return losses_functional.binary_cross_entropy(targets, predictions)
 #
 #
-# class TestInit(unittest.TestCase):
-#     def test_when_called_then_builds_two_hidden_units_and_one_output_unit(self):
-#         # Arrange / Act
-#         model = Xor(seed=42)
-#
-#         # Assert
-#         self.assertEqual(model.hidden_weights.shape, (2, 2))
-#         self.assertEqual(model.hidden_bias.shape, (2,))
-#         self.assertEqual(model.output_weights.shape, (2,))
-#         self.assertIsInstance(model.output_bias, float)
-#
+class TestInit(unittest.TestCase):
+    def test_when_called_then_builds_two_hidden_units_and_one_output_unit(self):
+        # Arrange / Act
+        model = Xor(seed=42)
+
+        # Assert
+        self.assertEqual(model.hidden_weights.shape, (2, 2))
+        self.assertEqual(model.hidden_bias.shape, (2,))
+        self.assertEqual(model.output_weights.shape, (2,))
+        self.assertIsInstance(model.output_bias, float)
+
 #
 # class TestForward(unittest.TestCase):
 #     def test_when_called_then_output_is_a_probability(self):
