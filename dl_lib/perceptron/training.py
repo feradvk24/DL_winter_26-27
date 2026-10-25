@@ -31,6 +31,7 @@ def train(
             targets,
             bias=model.bias,
             activation=model.activation,
+            loss=loss,
         )
 
         gradient = numerical_gradient(weights_loss, model.weights)
