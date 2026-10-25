@@ -52,13 +52,11 @@ def analytical_gradient(
 def forward(
     x: np.ndarray,
     weights: np.ndarray,
-    bias: float | None = None,
+    bias: float = 0.0,
     activation: Callable | None = None,
 ) -> float:
     prediction = np.dot(x, weights)
-
-    if bias is not None:
-        prediction += bias
+    prediction += bias
 
     if activation is not None:
         prediction = activation(prediction)
