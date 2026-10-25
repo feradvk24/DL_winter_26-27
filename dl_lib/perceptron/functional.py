@@ -25,3 +25,26 @@ def numerical_gradient(loss_fn: Callable, params: np.ndarray):
 
 def gradient_descent_step(params: np.ndarray, gradient: np.ndarray, learning_rate: float) -> np.ndarray:
     return params - learning_rate * gradient
+
+def analytical_gradient(
+    dataset: list[tuple],
+    weights: np.ndarray,
+    bias:  float | None = None,
+    activation: Callable | None = None,
+    ) -> tuple[np.ndarray, float]:
+    weight_gradient = np.zeros_like(weights, dtype=float)
+    bias_gradient = 0.0
+    current_bias = 0.0 if bias is None else bias
+
+    for x, y in dataset:
+        x = np.atleast_1d(x)
+
+        prediction = np.dot(x, weights) + current_bias
+        error = prediction - y
+
+        weight_gradient += 2 * error * x
+        bias_gradient += 2 * error
+
+    n = len(dataset)
+
+    return weight_gradient / n, float(bias_gradient / n)
