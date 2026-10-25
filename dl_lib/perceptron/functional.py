@@ -79,3 +79,20 @@ def dataset_loss(
     ])
 
     return float(loss(targets, predictions))
+
+def dataset_loss_given_bias(
+    dataset: list[tuple],
+    targets: np.ndarray,
+    weights: np.ndarray,
+    activation: Callable | None,
+    bias: np.ndarray,
+    loss: Callable = mse,
+) -> float:
+    return dataset_loss(
+        dataset,
+        targets,
+        weights,
+        float(bias[0]),
+        activation,
+        loss=loss,
+    )

@@ -121,30 +121,30 @@ class TestDatasetLoss(unittest.TestCase):
         self.assertAlmostEqual(actual, expected)
 
 
-# class TestDatasetLossGivenBias(unittest.TestCase):
-#     def test_when_called_then_matches_dataset_loss_with_the_unwrapped_bias(self):
-#         # Arrange
-#         dataset = [
-#             (np.array([0.0]), 0.0),
-#             (np.array([1.0]), 2.0),
-#             (np.array([2.0]), 4.0),
-#         ]
-#         targets = np.array([y for _, y in dataset])
-#         weights = np.array([2.0])
-#         bias_array = np.array([0.5])
-#         expected = functional.dataset_loss(
-#             dataset, targets, weights, bias_array[0], activation=None
-#         )
-#
-#         # Act
-#         actual = functional.dataset_loss_given_bias(
-#             dataset, targets, weights, None, bias_array
-#         )
-#
-#         # Assert
-#         self.assertAlmostEqual(actual, expected)
-#
-#
+class TestDatasetLossGivenBias(unittest.TestCase):
+    def test_when_called_then_matches_dataset_loss_with_the_unwrapped_bias(self):
+        # Arrange
+        dataset = [
+            (np.array([0.0]), 0.0),
+            (np.array([1.0]), 2.0),
+            (np.array([2.0]), 4.0),
+        ]
+        targets = np.array([y for _, y in dataset])
+        weights = np.array([2.0])
+        bias_array = np.array([0.5])
+        expected = functional.dataset_loss(
+            dataset, targets, weights, bias_array[0], activation=None
+        )
+
+        # Act
+        actual = functional.dataset_loss_given_bias(
+            dataset, targets, weights, None, bias_array
+        )
+
+        # Assert
+        self.assertAlmostEqual(actual, expected)
+
+
 class TestNumericalGradient(unittest.TestCase):
     def test_when_called_on_a_quadratic_loss_then_matches_the_analytical_derivative(
         self,
