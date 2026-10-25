@@ -2,7 +2,7 @@ from collections.abc import Callable
 
 import numpy as np
 
-from dl_lib.perceptron.functional import initialize_weights
+from dl_lib.perceptron.functional import forward, initialize_weights
 
 
 class Perceptron:
@@ -22,4 +22,7 @@ class Perceptron:
         if use_bias:
             rng = np.random.default_rng(seed)
             rng.uniform(low, high)
+
+    def forward(self, n_inputs):
+        return forward(n_inputs, self.weights, self.bias, self.activation)
 

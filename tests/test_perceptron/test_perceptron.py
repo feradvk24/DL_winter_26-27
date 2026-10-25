@@ -46,46 +46,46 @@ class TestInit(unittest.TestCase):
 
         # Assert
         np.testing.assert_array_equal(first.weights, second.weights)
-#
-#
-# class TestForward(unittest.TestCase):
-#     def test_when_called_then_output_is_finite(self):
-#         # Arrange
-#         model = Perceptron(2, use_bias=True, seed=42)
-#         x = np.array([1.0, 0.0])
-#
-#         # Act
-#         actual = model.forward(x)
-#
-#         # Assert
-#         self.assertTrue(np.isfinite(actual))
-#
-#     def test_when_no_activation_then_matches_the_plain_weighted_sum(self):
-#         # Arrange
-#         model = Perceptron(2, use_bias=True, seed=42)
-#         x = np.array([1.0, 2.0])
-#         expected = functional.forward(x, model.weights, model.bias)
-#
-#         # Act
-#         actual = model.forward(x)
-#
-#         # Assert
-#         self.assertAlmostEqual(actual, expected)
-#
-#     def test_when_an_activation_is_given_then_applies_it(self):
-#         # Arrange
-#         model = Perceptron(
-#             2, use_bias=True, activation=activations_functional.sigmoid, seed=42
-#         )
-#         x = np.array([1.0, 2.0])
-#
-#         # Act
-#         actual = model.forward(x)
-#
-#         # Assert
-#         self.assertGreater(actual, 0.0)
-#         self.assertLess(actual, 1.0)
-#
+
+
+class TestForward(unittest.TestCase):
+    def test_when_called_then_output_is_finite(self):
+        # Arrange
+        model = Perceptron(2, use_bias=True, seed=42)
+        x = np.array([1.0, 0.0])
+
+        # Act
+        actual = model.forward(x)
+
+        # Assert
+        self.assertTrue(np.isfinite(actual))
+
+    def test_when_no_activation_then_matches_the_plain_weighted_sum(self):
+        # Arrange
+        model = Perceptron(2, use_bias=True, seed=42)
+        x = np.array([1.0, 2.0])
+        expected = functional.forward(x, model.weights, model.bias)
+
+        # Act
+        actual = model.forward(x)
+
+        # Assert
+        self.assertAlmostEqual(actual, expected)
+
+    def test_when_an_activation_is_given_then_applies_it(self):
+        # Arrange
+        model = Perceptron(
+            2, use_bias=True, activation=activations_functional.sigmoid, seed=42
+        )
+        x = np.array([1.0, 2.0])
+
+        # Act
+        actual = model.forward(x)
+
+        # Assert
+        self.assertGreater(actual, 0.0)
+        self.assertLess(actual, 1.0)
+
 #
 # class TestTraining(unittest.TestCase):
 #     def test_when_a_single_gradient_descent_step_is_applied_then_loss_decreases(self):
