@@ -33,6 +33,8 @@ def analytical_gradient(
     weights: np.ndarray,
     bias:  float | None = None,
     activation: Callable | None = None,
+    activation_derivative: Callable | None = None,
+    loss: str = "mse",
     ) -> tuple[np.ndarray, float]:
     weight_gradient = np.zeros_like(weights, dtype=float)
     bias_gradient = 0.0
@@ -40,12 +42,31 @@ def analytical_gradient(
 
     for x, y in dataset:
         x = np.atleast_1d(x)
+        z = forward(x, weights, current_bias)
 
-        prediction = np.dot(x, weights) + current_bias
+        prediction = z
+        if activation is not None:
+            prediction = activation(z)
+
         error = prediction - y
 
-        weight_gradient += 2 * error * x
-        bias_gradient += 2 * error
+        if loss == "bce":
+            delta = error
+        
+        elif loss == "mse":
+            delta = 2 * error
+
+            if activation is not None:
+                if activation_derivative is None:
+                    raise ValueError("MSE with activation needs derivative")
+
+                delta *= activation_derivative(z)
+
+        else:
+            raise ValueError(f"Unsupported loss: {loss}")
+
+        weight_gradient += delta * x
+        bias_gradient += delta
 
     n = len(dataset)
 
@@ -92,7 +113,7 @@ def dataset_loss_given_bias(
         dataset,
         targets,
         weights,
-        float(bias[0]),
+        float(bias.item()),
         activation,
         loss=loss,
     )
