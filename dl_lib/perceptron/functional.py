@@ -2,6 +2,8 @@ from collections.abc import Callable
 
 import numpy as np
 
+from dl_lib.losses.functional import mse
+
 
 def initialize_weights(low: float, high: float, size: int, seed: int | None = None) -> np.ndarray:
     rng = np.random.default_rng(seed)
@@ -62,3 +64,18 @@ def forward(
         prediction = activation(prediction)
 
     return float(prediction)
+
+def dataset_loss(
+    dataset: list[tuple],
+    targets: np.ndarray,
+    weights: np.ndarray,
+    bias: float = 0.0,
+    activation: Callable | None = None,
+    loss: Callable = mse,
+) -> float:
+    predictions = np.array([
+        forward(x, weights, bias, activation)
+        for x, _ in dataset
+    ])
+
+    return float(loss(targets, predictions))

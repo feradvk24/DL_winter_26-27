@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-# from dl_lib.losses import functional as losses_functional
+from dl_lib.losses import functional as losses_functional
 from dl_lib.perceptron import functional
 
 
@@ -63,64 +63,64 @@ class TestForward(unittest.TestCase):
 
         # Assert
         self.assertAlmostEqual(actual, expected)
-#
-#
-# class TestDatasetLoss(unittest.TestCase):
-#     def test_when_called_then_matches_the_mean_squared_error_over_the_dataset(self):
-#         # Arrange
-#         dataset = [
-#             (np.array([0.0]), 0.0),
-#             (np.array([1.0]), 2.0),
-#             (np.array([2.0]), 4.0),
-#         ]
-#         targets = np.array([y for _, y in dataset])
-#         weights = np.array([1.0])
-#         bias = 0.0
-#         expected = (
-#             5.0 / 3.0
-#         )  # predictions [0, 1, 2] vs targets [0, 2, 4]: mean((0, 1, 4)) = 5/3
-#
-#         # Act
-#         actual = functional.dataset_loss(
-#             dataset, targets, weights, bias, activation=None
-#         )
-#
-#         # Assert
-#         self.assertAlmostEqual(actual, expected)
-#
-#     def test_when_bce_loss_given_then_matches_the_binary_cross_entropy_over_the_dataset(
-#         self,
-#     ):
-#         # Arrange
-#         dataset = [
-#             (np.array([0.0, 0.0]), 0.0),
-#             (np.array([0.0, 1.0]), 0.0),
-#             (np.array([1.0, 0.0]), 0.0),
-#             (np.array([1.0, 1.0]), 1.0),
-#         ]
-#         targets = np.array([y for _, y in dataset])
-#         weights = np.array([0.5, -0.1])
-#         bias = 0.7
-#         activation = lambda z: 1.0 / (1.0 + np.exp(-z))
-#         predictions = np.array(
-#             [functional.forward(x, weights, bias, activation) for x, _ in dataset]
-#         )
-#         expected = losses_functional.binary_cross_entropy(targets, predictions)
-#
-#         # Act
-#         actual = functional.dataset_loss(
-#             dataset,
-#             targets,
-#             weights,
-#             bias,
-#             activation=activation,
-#             loss=losses_functional.binary_cross_entropy,
-#         )
-#
-#         # Assert
-#         self.assertAlmostEqual(actual, expected)
-#
-#
+
+
+class TestDatasetLoss(unittest.TestCase):
+    def test_when_called_then_matches_the_mean_squared_error_over_the_dataset(self):
+        # Arrange
+        dataset = [
+            (np.array([0.0]), 0.0),
+            (np.array([1.0]), 2.0),
+            (np.array([2.0]), 4.0),
+        ]
+        targets = np.array([y for _, y in dataset])
+        weights = np.array([1.0])
+        bias = 0.0
+        expected = (
+            5.0 / 3.0
+        )  # predictions [0, 1, 2] vs targets [0, 2, 4]: mean((0, 1, 4)) = 5/3
+
+        # Act
+        actual = functional.dataset_loss(
+            dataset, targets, weights, bias, activation=None
+        )
+
+        # Assert
+        self.assertAlmostEqual(actual, expected)
+
+    def test_when_bce_loss_given_then_matches_the_binary_cross_entropy_over_the_dataset(
+        self,
+    ):
+        # Arrange
+        dataset = [
+            (np.array([0.0, 0.0]), 0.0),
+            (np.array([0.0, 1.0]), 0.0),
+            (np.array([1.0, 0.0]), 0.0),
+            (np.array([1.0, 1.0]), 1.0),
+        ]
+        targets = np.array([y for _, y in dataset])
+        weights = np.array([0.5, -0.1])
+        bias = 0.7
+        activation = lambda z: 1.0 / (1.0 + np.exp(-z))
+        predictions = np.array(
+            [functional.forward(x, weights, bias, activation) for x, _ in dataset]
+        )
+        expected = losses_functional.binary_cross_entropy(targets, predictions)
+
+        # Act
+        actual = functional.dataset_loss(
+            dataset,
+            targets,
+            weights,
+            bias,
+            activation=activation,
+            loss=losses_functional.binary_cross_entropy,
+        )
+
+        # Assert
+        self.assertAlmostEqual(actual, expected)
+
+
 # class TestDatasetLossGivenBias(unittest.TestCase):
 #     def test_when_called_then_matches_dataset_loss_with_the_unwrapped_bias(self):
 #         # Arrange
