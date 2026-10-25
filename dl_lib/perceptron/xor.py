@@ -41,3 +41,7 @@ class Xor:
             self.output_bias,
             activation=sigmoid,
         )
+
+
+def forward(model: Xor, x1: float, x2: float) -> float:
+    return model.forward(np.array([x1, x2]))

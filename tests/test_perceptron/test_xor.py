@@ -5,7 +5,7 @@ import numpy as np
 #
 # from dl_lib.losses import functional as losses_functional
 # from dl_lib.perceptron import datasets, functional
-from dl_lib.perceptron.xor import Xor
+from dl_lib.perceptron.xor import Xor, forward
 #
 #
 # def _loss_given(
@@ -62,22 +62,22 @@ class TestForward(unittest.TestCase):
         # Assert
         self.assertGreater(actual, 0.0)
         self.assertLess(actual, 1.0)
-#
-#
-# class TestModuleForward(unittest.TestCase):
-#     def test_when_called_then_matches_the_models_own_forward(self):
-#         # Arrange
-#         model = Xor(seed=42)
-#         x1, x2 = 1.0, 0.0
-#         expected = model.forward(np.array([x1, x2]))
-#
-#         # Act
-#         actual = forward(model, x1, x2)
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
-#
+
+
+class TestModuleForward(unittest.TestCase):
+    def test_when_called_then_matches_the_models_own_forward(self):
+        # Arrange
+        model = Xor(seed=42)
+        x1, x2 = 1.0, 0.0
+        expected = model.forward(np.array([x1, x2]))
+
+        # Act
+        actual = forward(model, x1, x2)
+
+        # Assert
+        self.assertEqual(actual, expected)
+
+
 # class TestTraining(unittest.TestCase):
 #     def test_when_a_single_gradient_descent_step_is_applied_to_the_hidden_weights_then_loss_decreases(
 #         self,
