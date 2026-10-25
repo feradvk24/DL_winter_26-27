@@ -32,23 +32,23 @@ class TestAndDataset(unittest.TestCase):
             np.array([x for x, _ in actual]),
             np.array([[0.0, 0.0], [0.0, 1.0], [1.0, 0.0], [1.0, 1.0]]),
         )
-#
-#
-# class TestOrDataset(unittest.TestCase):
-#     def test_when_called_then_returns_the_or_truth_table(self):
-#         # Arrange
-#         expected_targets = [0.0, 1.0, 1.0, 1.0]
-#
-#         # Act
-#         actual = datasets.or_dataset()
-#
-#         # Assert
-#         self.assertEqual([y for _, y in actual], expected_targets)
-#         np.testing.assert_array_equal(
-#             np.array([x for x, _ in actual]),
-#             np.array([[0.0, 0.0], [0.0, 1.0], [1.0, 0.0], [1.0, 1.0]]),
-#         )
-#
+
+
+class TestOrDataset(unittest.TestCase):
+    def test_when_called_then_returns_the_or_truth_table(self):
+        # Arrange
+        expected_targets = [0.0, 1.0, 1.0, 1.0]
+
+        # Act
+        actual = datasets.or_dataset()
+
+        # Assert
+        self.assertEqual([y for _, y in actual], expected_targets)
+        np.testing.assert_array_equal(
+            np.array([x for x, _ in actual]),
+            np.array([[0.0, 0.0], [0.0, 1.0], [1.0, 0.0], [1.0, 1.0]]),
+        )
+
 #
 # class TestNandDataset(unittest.TestCase):
 #     def test_when_called_then_returns_the_nand_truth_table(self):
