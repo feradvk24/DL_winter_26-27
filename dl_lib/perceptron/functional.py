@@ -48,3 +48,19 @@ def analytical_gradient(
     n = len(dataset)
 
     return weight_gradient / n, float(bias_gradient / n)
+
+def forward(
+    x: np.ndarray,
+    weights: np.ndarray,
+    bias: float | None = None,
+    activation: Callable | None = None,
+) -> float:
+    prediction = np.dot(x, weights)
+
+    if bias is not None:
+        prediction += bias
+
+    if activation is not None:
+        prediction = activation(prediction)
+
+    return float(prediction)

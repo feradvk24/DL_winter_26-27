@@ -34,35 +34,35 @@ class TestInitializeWeights(unittest.TestCase):
         # Assert
         np.testing.assert_array_equal(first, second)
 
-#
-# class TestForward(unittest.TestCase):
-#     def test_when_activation_is_none_then_returns_the_weighted_sum_plus_bias(self):
-#         # Arrange
-#         x = np.array([2.0, 3.0])
-#         weights = np.array([1.0, 2.0])
-#         bias = 0.5
-#         expected = 8.5
-#
-#         # Act
-#         actual = functional.forward(x, weights, bias=bias)
-#
-#         # Assert
-#         self.assertAlmostEqual(actual, expected)
-#
-#     def test_when_an_activation_is_given_then_applies_it_to_the_weighted_sum(self):
-#         # Arrange
-#         x = np.array([1.0])
-#         weights = np.array([0.0])
-#         bias = 0.0
-#         expected = 0.5
-#
-#         # Act
-#         actual = functional.forward(
-#             x, weights, bias=bias, activation=lambda z: 1.0 / (1.0 + np.exp(-z))
-#         )
-#
-#         # Assert
-#         self.assertAlmostEqual(actual, expected)
+
+class TestForward(unittest.TestCase):
+    def test_when_activation_is_none_then_returns_the_weighted_sum_plus_bias(self):
+        # Arrange
+        x = np.array([2.0, 3.0])
+        weights = np.array([1.0, 2.0])
+        bias = 0.5
+        expected = 8.5
+
+        # Act
+        actual = functional.forward(x, weights, bias=bias)
+
+        # Assert
+        self.assertAlmostEqual(actual, expected)
+
+    def test_when_an_activation_is_given_then_applies_it_to_the_weighted_sum(self):
+        # Arrange
+        x = np.array([1.0])
+        weights = np.array([0.0])
+        bias = 0.0
+        expected = 0.5
+
+        # Act
+        actual = functional.forward(
+            x, weights, bias=bias, activation=lambda z: 1.0 / (1.0 + np.exp(-z))
+        )
+
+        # Assert
+        self.assertAlmostEqual(actual, expected)
 #
 #
 # class TestDatasetLoss(unittest.TestCase):
