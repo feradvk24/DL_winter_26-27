@@ -49,19 +49,19 @@ class TestInit(unittest.TestCase):
         self.assertEqual(model.output_weights.shape, (2,))
         self.assertIsInstance(model.output_bias, float)
 
-#
-# class TestForward(unittest.TestCase):
-#     def test_when_called_then_output_is_a_probability(self):
-#         # Arrange
-#         model = Xor(seed=42)
-#         x = np.array([1.0, 0.0])
-#
-#         # Act
-#         actual = model.forward(x)
-#
-#         # Assert
-#         self.assertGreater(actual, 0.0)
-#         self.assertLess(actual, 1.0)
+
+class TestForward(unittest.TestCase):
+    def test_when_called_then_output_is_a_probability(self):
+        # Arrange
+        model = Xor(seed=42)
+        x = np.array([1.0, 0.0])
+
+        # Act
+        actual = model.forward(x)
+
+        # Assert
+        self.assertGreater(actual, 0.0)
+        self.assertLess(actual, 1.0)
 #
 #
 # class TestModuleForward(unittest.TestCase):
