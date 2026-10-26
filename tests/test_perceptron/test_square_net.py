@@ -54,19 +54,19 @@ class TestInit(unittest.TestCase):
         self.assertEqual(model.output_weights.shape, (hidden_units,))
         self.assertIsInstance(model.output_bias, float)
 
-#
-# class TestForward(unittest.TestCase):
-#     def test_when_called_then_output_is_finite(self):
-#         # Arrange
-#         model = SquareNet(seed=42)
-#         x = np.array([2.0])
-#
-#         # Act
-#         actual = model.forward(x)
-#
-#         # Assert
-#         self.assertTrue(np.isfinite(actual))
-#
+
+class TestForward(unittest.TestCase):
+    def test_when_called_then_output_is_finite(self):
+        # Arrange
+        model = SquareNet(seed=42)
+        x = np.array([2.0])
+
+        # Act
+        actual = model.forward(x)
+
+        # Assert
+        self.assertTrue(np.isfinite(actual))
+
 #
 # class TestTraining(unittest.TestCase):
 #     def test_when_a_single_gradient_descent_step_is_applied_to_the_hidden_weights_then_loss_decreases(
