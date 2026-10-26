@@ -1,11 +1,11 @@
-# import unittest
-# from functools import partial
-#
-# import numpy as np
-#
+import unittest
+from functools import partial
+
+import numpy as np
+
 # from dl_lib.losses import functional as losses_functional
 # from dl_lib.perceptron import functional
-# from dl_lib.perceptron.square_net import SquareNet
+from dl_lib.perceptron.square_net import SquareNet
 #
 # SQUARE_DATASET = [(np.array([float(x)]), float(x**2)) for x in range(-3, 4)]
 #
@@ -39,21 +39,21 @@
 #     predictions = np.array([model.forward(x) for x, _ in dataset])
 #     return losses_functional.mse(targets, predictions)
 #
-#
-# class TestInit(unittest.TestCase):
-#     def test_when_called_then_builds_a_hidden_layer_and_a_linear_output_unit(self):
-#         # Arrange
-#         hidden_units = 4
-#
-#         # Act
-#         model = SquareNet(hidden_units=hidden_units, seed=42)
-#
-#         # Assert
-#         self.assertEqual(model.hidden_weights.shape, (hidden_units,))
-#         self.assertEqual(model.hidden_bias.shape, (hidden_units,))
-#         self.assertEqual(model.output_weights.shape, (hidden_units,))
-#         self.assertIsInstance(model.output_bias, float)
-#
+
+class TestInit(unittest.TestCase):
+    def test_when_called_then_builds_a_hidden_layer_and_a_linear_output_unit(self):
+        # Arrange
+        hidden_units = 4
+
+        # Act
+        model = SquareNet(hidden_units=hidden_units, seed=42)
+
+        # Assert
+        self.assertEqual(model.hidden_weights.shape, (hidden_units,))
+        self.assertEqual(model.hidden_bias.shape, (hidden_units,))
+        self.assertEqual(model.output_weights.shape, (hidden_units,))
+        self.assertIsInstance(model.output_bias, float)
+
 #
 # class TestForward(unittest.TestCase):
 #     def test_when_called_then_output_is_finite(self):
