@@ -85,33 +85,33 @@ class TestAdd(unittest.TestCase):
 
         # Assert
         self.assertEqual(actual, expected)
-#
-#     def test_when_two_values_added_then_result_tracks_operands_and_op(self):
-#         # Arrange
-#         a = Value(2.0)
-#         b = Value(-3.0)
-#         expected_prev = {a, b}
-#         expected_op = "+"
-#
-#         # Act
-#         out = a + b
-#
-#         # Assert
-#         self.assertEqual(out._prev, expected_prev)
-#         self.assertEqual(out._op, expected_op)
-#
-#     def test_when_value_added_to_float_then_data_is_sum(self):
-#         # Arrange
-#         a = Value(2.0)
-#         expected = 5.0
-#
-#         # Act
-#         actual = (a + 3.0).data
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
-#
+
+    def test_when_two_values_added_then_result_tracks_operands_and_op(self):
+        # Arrange
+        a = Value(2.0)
+        b = Value(-3.0)
+        expected_prev = {a, b}
+        expected_op = "+"
+
+        # Act
+        out = a + b
+
+        # Assert
+        self.assertEqual(out._prev, expected_prev)
+        self.assertEqual(out._op, expected_op)
+
+    def test_when_value_added_to_float_then_data_is_sum(self):
+        # Arrange
+        a = Value(2.0)
+        expected = 5.0
+
+        # Act
+        actual = (a + 3.0).data
+
+        # Assert
+        self.assertEqual(actual, expected)
+
+
 class TestRAdd(unittest.TestCase):
 
     def test_when_float_added_to_value_then_data_is_sum(self):
@@ -139,34 +139,34 @@ class TestMul(unittest.TestCase):
 
         # Assert
         self.assertEqual(actual, expected)
-#
-#     def test_when_two_values_multiplied_then_result_tracks_operands_and_op(
-#             self):
-#         # Arrange
-#         a = Value(2.0)
-#         b = Value(-3.0)
-#         expected_prev = {a, b}
-#         expected_op = "*"
-#
-#         # Act
-#         out = a * b
-#
-#         # Assert
-#         self.assertEqual(out._prev, expected_prev)
-#         self.assertEqual(out._op, expected_op)
-#
-#     def test_when_value_multiplied_by_float_then_data_is_product(self):
-#         # Arrange
-#         a = Value(2.0)
-#         expected = 6.0
-#
-#         # Act
-#         actual = (a * 3.0).data
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
-#
+
+    def test_when_two_values_multiplied_then_result_tracks_operands_and_op(
+            self):
+        # Arrange
+        a = Value(2.0)
+        b = Value(-3.0)
+        expected_prev = {a, b}
+        expected_op = "*"
+
+        # Act
+        out = a * b
+
+        # Assert
+        self.assertEqual(out._prev, expected_prev)
+        self.assertEqual(out._op, expected_op)
+
+    def test_when_value_multiplied_by_float_then_data_is_product(self):
+        # Arrange
+        a = Value(2.0)
+        expected = 6.0
+
+        # Act
+        actual = (a * 3.0).data
+
+        # Assert
+        self.assertEqual(actual, expected)
+
+
 class TestRMul(unittest.TestCase):
 
     def test_when_float_multiplied_by_value_then_data_is_product(self):
