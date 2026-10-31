@@ -1,3 +1,6 @@
+import math
+
+
 class Value:
     def __init__(
         self, 
@@ -38,4 +41,7 @@ class Value:
 
     def __rmul__(self, other):
         return self * other
+
+    def tanh(self) -> "Value":
+        return Value(data=math.tanh(self.data), _prev={self}, _op="tanh")
 
