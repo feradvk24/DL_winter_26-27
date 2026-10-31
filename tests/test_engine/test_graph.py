@@ -54,46 +54,46 @@ class TestTrace(unittest.TestCase):
         self.assertEqual(actual_nodes, expected_nodes)
         self.assertEqual(actual_edges, expected_edges)
 
-#
-# class TestDrawDot(unittest.TestCase):
-#
-#     def test_when_called_on_expression_then_renders_a_record_node_per_value_and_an_op_node_per_operation(
-#             self):
-#         # Arrange
-#         a = Value(2.0, label="a")
-#         b = Value(-3.0, label="b")
-#         c = a + b
-#         c.label = "c"
-#         expected_a_record = "{ a | data: 2.0000 | grad: 0.0000 }"
-#         expected_b_record = "{ b | data: -3.0000 | grad: 0.0000 }"
-#         expected_c_record = "{ c | data: -1.0000 | grad: 0.0000 }"
-#         expected_op_count = 1
-#
-#         # Act
-#         dot = graph.draw_dot(c)
-#         source = dot.source
-#
-#         # Assert
-#         self.assertIn(expected_a_record, source)
-#         self.assertIn(expected_b_record, source)
-#         self.assertIn(expected_c_record, source)
-#         self.assertEqual(source.count('label="+"'), expected_op_count)
-#
-#     def test_when_called_on_leaf_then_renders_only_one_record_node_and_no_op_node(
-#             self):
-#         # Arrange
-#         a = Value(2.0, label="a")
-#         expected_a_record = "{ a | data: 2.0000 | grad: 0.0000 }"
-#         expected_node_count = 1
-#
-#         # Act
-#         dot = graph.draw_dot(a)
-#         source = dot.source
-#
-#         # Assert
-#         self.assertIn(expected_a_record, source)
-#         self.assertEqual(source.count("shape=record"), expected_node_count)
-#         self.assertEqual(source.count("label="), expected_node_count)
+
+class TestDrawDot(unittest.TestCase):
+
+    def test_when_called_on_expression_then_renders_a_record_node_per_value_and_an_op_node_per_operation(
+            self):
+        # Arrange
+        a = Value(2.0, label="a")
+        b = Value(-3.0, label="b")
+        c = a + b
+        c.label = "c"
+        expected_a_record = "{ a | data: 2.0000 | grad: 0.0000 }"
+        expected_b_record = "{ b | data: -3.0000 | grad: 0.0000 }"
+        expected_c_record = "{ c | data: -1.0000 | grad: 0.0000 }"
+        expected_op_count = 1
+
+        # Act
+        dot = graph.draw_dot(c)
+        source = dot.source
+
+        # Assert
+        self.assertIn(expected_a_record, source)
+        self.assertIn(expected_b_record, source)
+        self.assertIn(expected_c_record, source)
+        self.assertEqual(source.count('label="+"'), expected_op_count)
+
+    def test_when_called_on_leaf_then_renders_only_one_record_node_and_no_op_node(
+            self):
+        # Arrange
+        a = Value(2.0, label="a")
+        expected_a_record = "{ a | data: 2.0000 | grad: 0.0000 }"
+        expected_node_count = 1
+
+        # Act
+        dot = graph.draw_dot(a)
+        source = dot.source
+
+        # Assert
+        self.assertIn(expected_a_record, source)
+        self.assertEqual(source.count("shape=record"), expected_node_count)
+        self.assertEqual(source.count("label="), expected_node_count)
 #
 #
 # class TestTopSort(unittest.TestCase):
