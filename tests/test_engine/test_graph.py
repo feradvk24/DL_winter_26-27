@@ -1,59 +1,59 @@
-# import unittest
-#
-# from dl_lib.engine import graph
-# from dl_lib.engine.value import Value
-#
-#
-# class TestTrace(unittest.TestCase):
-#
-#     def test_when_called_on_leaf_then_returns_only_that_node_and_no_edges(
-#             self):
-#         # Arrange
-#         a = Value(2.0)
-#         expected_nodes = {a}
-#         expected_edges = set()
-#
-#         # Act
-#         actual_nodes, actual_edges = graph.trace(a)
-#
-#         # Assert
-#         self.assertEqual(actual_nodes, expected_nodes)
-#         self.assertEqual(actual_edges, expected_edges)
-#
-#     def test_when_called_on_expression_then_returns_every_node_and_edge(self):
-#         # Arrange
-#         a = Value(2.0)
-#         b = Value(-3.0)
-#         c = Value(10.0)
-#         e = a * b
-#         d = e + c
-#         expected_nodes = {a, b, c, d, e}
-#         expected_edges = {(a, e), (b, e), (e, d), (c, d)}
-#
-#         # Act
-#         actual_nodes, actual_edges = graph.trace(d)
-#
-#         # Assert
-#         self.assertEqual(actual_nodes, expected_nodes)
-#         self.assertEqual(actual_edges, expected_edges)
-#
-#     def test_when_a_value_feeds_two_parents_then_it_is_visited_only_once(self):
-#         # Arrange
-#         a = Value(2.0)
-#         b = Value(-3.0)
-#         c = a + b
-#         d = a * b
-#         e = c + d
-#         expected_nodes = {a, b, c, d, e}
-#         expected_edges = {(a, c), (b, c), (a, d), (b, d), (c, e), (d, e)}
-#
-#         # Act
-#         actual_nodes, actual_edges = graph.trace(e)
-#
-#         # Assert
-#         self.assertEqual(actual_nodes, expected_nodes)
-#         self.assertEqual(actual_edges, expected_edges)
-#
+import unittest
+
+from dl_lib.engine import graph
+from dl_lib.engine.value import Value
+
+
+class TestTrace(unittest.TestCase):
+
+    def test_when_called_on_leaf_then_returns_only_that_node_and_no_edges(
+            self):
+        # Arrange
+        a = Value(2.0)
+        expected_nodes = {a}
+        expected_edges = set()
+
+        # Act
+        actual_nodes, actual_edges = graph.trace(a)
+
+        # Assert
+        self.assertEqual(actual_nodes, expected_nodes)
+        self.assertEqual(actual_edges, expected_edges)
+
+    def test_when_called_on_expression_then_returns_every_node_and_edge(self):
+        # Arrange
+        a = Value(2.0)
+        b = Value(-3.0)
+        c = Value(10.0)
+        e = a * b
+        d = e + c
+        expected_nodes = {a, b, c, d, e}
+        expected_edges = {(a, e), (b, e), (e, d), (c, d)}
+
+        # Act
+        actual_nodes, actual_edges = graph.trace(d)
+
+        # Assert
+        self.assertEqual(actual_nodes, expected_nodes)
+        self.assertEqual(actual_edges, expected_edges)
+
+    def test_when_a_value_feeds_two_parents_then_it_is_visited_only_once(self):
+        # Arrange
+        a = Value(2.0)
+        b = Value(-3.0)
+        c = a + b
+        d = a * b
+        e = c + d
+        expected_nodes = {a, b, c, d, e}
+        expected_edges = {(a, c), (b, c), (a, d), (b, d), (c, e), (d, e)}
+
+        # Act
+        actual_nodes, actual_edges = graph.trace(e)
+
+        # Assert
+        self.assertEqual(actual_nodes, expected_nodes)
+        self.assertEqual(actual_edges, expected_edges)
+
 #
 # class TestDrawDot(unittest.TestCase):
 #
