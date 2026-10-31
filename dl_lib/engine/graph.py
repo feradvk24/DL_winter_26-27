@@ -41,3 +41,22 @@ def draw_dot(value: Value) -> Digraph:
         dot.edge(str(id(child)), str(id(parent)) + "_op")
 
     return dot
+
+
+
+def top_sort(value: Value) -> list[Value]:
+    visited = set()
+    order = []
+
+    def visit(current: Value) -> None:
+        if current in visited:
+            return
+
+        visited.add(current)
+        for operand in current._prev:
+            visit(operand)
+
+        order.append(current)
+
+    visit(value)
+    return order
