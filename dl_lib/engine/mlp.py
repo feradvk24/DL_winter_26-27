@@ -33,3 +33,20 @@ class Layer:
             for neuron in self.neurons
             for parameter in neuron.parameters()
         ]
+
+
+class MLP:
+    def __init__(self, n_inputs: int, n_outputs: list[int], rng: random.Random | None = None):
+        layer_rng = rng if rng else random.Random(42)
+
+        self.layers = []
+        current_inputs = n_inputs
+
+        for output_size in n_outputs:
+            layer = Layer(
+                n_inputs = current_inputs,
+                n_outputs = output_size,
+                rng = layer_rng
+            )
+            self.layers.append(layer)
+            current_inputs = output_size

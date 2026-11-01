@@ -1,8 +1,7 @@
 import random
 import unittest
 
-# from dl_lib.engine.mlp import MLP, Layer, Neuron
-from dl_lib.engine.mlp import Layer, Neuron
+from dl_lib.engine.mlp import MLP, Layer, Neuron
 from dl_lib.engine.value import Value
 
 
@@ -184,31 +183,31 @@ class TestLayerParameters(unittest.TestCase):
         # Assert
         self.assertEqual(actual, expected)
 
-#
-# class TestMLPInit(unittest.TestCase):
-#
-#     def test_when_constructed_then_has_one_layer_per_output_size(self):
-#         # Arrange
-#         expected = 2
-#
-#         # Act
-#         actual = len(MLP(3, [4, 1]).layers)
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
-#     def test_when_constructed_then_each_layers_input_size_matches_previous_output(
-#             self):
-#         # Arrange
-#         mlp = MLP(3, [4, 2, 1])
-#         expected = [3, 4, 2]
-#
-#         # Act
-#         actual = [len(layer.neurons[0].w) for layer in mlp.layers]
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
+
+class TestMLPInit(unittest.TestCase):
+
+    def test_when_constructed_then_has_one_layer_per_output_size(self):
+        # Arrange
+        expected = 2
+
+        # Act
+        actual = len(MLP(3, [4, 1]).layers)
+
+        # Assert
+        self.assertEqual(actual, expected)
+
+    def test_when_constructed_then_each_layers_input_size_matches_previous_output(
+            self):
+        # Arrange
+        mlp = MLP(3, [4, 2, 1])
+        expected = [3, 4, 2]
+
+        # Act
+        actual = [len(layer.neurons[0].w) for layer in mlp.layers]
+
+        # Assert
+        self.assertEqual(actual, expected)
+
 #
 # class TestMLPCall(unittest.TestCase):
 #
