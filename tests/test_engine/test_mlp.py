@@ -155,35 +155,35 @@ class TestLayerCall(unittest.TestCase):
         self.assertIsInstance(actual, list)
         self.assertEqual(len(actual), 1)
 
-#
-# class TestLayerParameters(unittest.TestCase):
-#
-#     def test_when_parameters_called_then_returns_parameters_from_every_neuron(
-#             self):
-#         # Arrange
-#         layer = Layer(3, 2)
-#         expected = [
-#             *layer.neurons[0].parameters(), *layer.neurons[1].parameters()
-#         ]
-#
-#         # Act
-#         actual = layer.parameters()
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
-#     def test_when_parameters_called_then_count_matches_neurons_times_their_size(
-#             self):
-#         # Arrange
-#         layer = Layer(3, 4)
-#         expected = 4 * (3 + 1)
-#
-#         # Act
-#         actual = len(layer.parameters())
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
+
+class TestLayerParameters(unittest.TestCase):
+
+    def test_when_parameters_called_then_returns_parameters_from_every_neuron(
+            self):
+        # Arrange
+        layer = Layer(3, 2)
+        expected = [
+            *layer.neurons[0].parameters(), *layer.neurons[1].parameters()
+        ]
+
+        # Act
+        actual = layer.parameters()
+
+        # Assert
+        self.assertEqual(actual, expected)
+
+    def test_when_parameters_called_then_count_matches_neurons_times_their_size(
+            self):
+        # Arrange
+        layer = Layer(3, 4)
+        expected = 4 * (3 + 1)
+
+        # Act
+        actual = len(layer.parameters())
+
+        # Assert
+        self.assertEqual(actual, expected)
+
 #
 # class TestMLPInit(unittest.TestCase):
 #
