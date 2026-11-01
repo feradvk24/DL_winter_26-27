@@ -309,33 +309,33 @@ class TestPow(unittest.TestCase):
         # Assert
         self.assertEqual(a.grad, expected)
 
-#
-# class TestTrueDiv(unittest.TestCase):
-#
-#     def test_when_value_divided_by_float_then_data_matches_hand_calculation(
-#             self):
-#         # Arrange
-#         a = Value(6.0)
-#         expected = 3.0
-#
-#         # Act
-#         actual = (a / 2.0).data
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
-#     def test_when_value_divided_by_value_then_data_matches_hand_calculation(
-#             self):
-#         # Arrange
-#         a = Value(6.0)
-#         b = Value(2.0)
-#         expected = 3.0
-#
-#         # Act
-#         actual = (a / b).data
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
+
+class TestTrueDiv(unittest.TestCase):
+
+    def test_when_value_divided_by_float_then_data_matches_hand_calculation(
+            self):
+        # Arrange
+        a = Value(6.0)
+        expected = 3.0
+
+        # Act
+        actual = (a / 2.0).data
+
+        # Assert
+        self.assertEqual(actual, expected)
+
+    def test_when_value_divided_by_value_then_data_matches_hand_calculation(
+            self):
+        # Arrange
+        a = Value(6.0)
+        b = Value(2.0)
+        expected = 3.0
+
+        # Act
+        actual = (a / b).data
+
+        # Assert
+        self.assertEqual(actual, expected)
 #
 #
 # class TestExp(unittest.TestCase):

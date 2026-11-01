@@ -91,3 +91,23 @@ class Value:
 
         out._backward = _backward
         return out
+
+    def __truediv__(self, other):
+        if isinstance(other, (int, float)):
+            out = Value(data=self.data / other, _prev={self}, _op="/")
+
+            def _backward():
+                self.grad += (1 / other) * out.grad
+            
+        elif isinstance(other, Value):
+            out = Value(data=self.data / other.data, _prev={self, other}, _op="/")
+
+            def _backward():
+                self.grad += (1 / other.data) * out.grad
+                other.grad += (-self.data / (other.data**2)) * out.grad
+        
+        else:
+            raise NotImplementedError
+
+        out._backward = _backward
+        return out
