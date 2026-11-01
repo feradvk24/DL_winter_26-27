@@ -281,34 +281,34 @@ class TestBackward(unittest.TestCase):
         # Assert
         self.assertEqual(a.grad, expected)
 
-#
-# class TestPow(unittest.TestCase):
-#
-#     def test_when_raised_to_float_power_then_data_matches_hand_calculation(
-#             self):
-#         # Arrange
-#         a = Value(2.0)
-#         expected = 8.0
-#
-#         # Act
-#         actual = (a**3.0).data
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
-#     def test_when_backward_called_then_operand_gradient_matches_power_rule(
-#             self):
-#         # Arrange
-#         a = Value(2.0)
-#         out = a**3.0
-#         expected = 3.0 * 2.0**2.0
-#
-#         # Act
-#         out.backward()
-#
-#         # Assert
-#         self.assertEqual(a.grad, expected)
-#
+
+class TestPow(unittest.TestCase):
+
+    def test_when_raised_to_float_power_then_data_matches_hand_calculation(
+            self):
+        # Arrange
+        a = Value(2.0)
+        expected = 8.0
+
+        # Act
+        actual = (a**3.0).data
+
+        # Assert
+        self.assertEqual(actual, expected)
+
+    def test_when_backward_called_then_operand_gradient_matches_power_rule(
+            self):
+        # Arrange
+        a = Value(2.0)
+        out = a**3.0
+        expected = 3.0 * 2.0**2.0
+
+        # Act
+        out.backward()
+
+        # Assert
+        self.assertEqual(a.grad, expected)
+
 #
 # class TestTrueDiv(unittest.TestCase):
 #
