@@ -1,48 +1,49 @@
-# import random
-# import unittest
-#
+import random
+import unittest
+
 # from dl_lib.engine.mlp import MLP, Layer, Neuron
-# from dl_lib.engine.value import Value
-#
-#
-# class TestNeuronInit(unittest.TestCase):
-#
-#     def test_when_constructed_then_has_one_weight_per_input(self):
-#         # Arrange
-#         expected = 3
-#
-#         # Act
-#         actual = len(Neuron(3).w)
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
-#     def test_when_constructed_with_seeded_rng_then_weights_match_uniform_draws(
-#             self):
-#         # Arrange
-#         rng = random.Random(42)
-#         expected = [rng.uniform(-1, 1), rng.uniform(-1, 1)]
-#
-#         # Act
-#         actual = [w.data for w in Neuron(2, rng=random.Random(42)).w]
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
-#     def test_when_constructed_with_seeded_rng_then_bias_matches_next_uniform_draw(
-#             self):
-#         # Arrange
-#         rng = random.Random(42)
-#         rng.uniform(-1, 1)
-#         rng.uniform(-1, 1)
-#         expected = rng.uniform(-1, 1)
-#
-#         # Act
-#         actual = Neuron(2, rng=random.Random(42)).b.data
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
+from dl_lib.engine.mlp import Neuron
+from dl_lib.engine.value import Value
+
+
+class TestNeuronInit(unittest.TestCase):
+
+    def test_when_constructed_then_has_one_weight_per_input(self):
+        # Arrange
+        expected = 3
+
+        # Act
+        actual = len(Neuron(3).w)
+
+        # Assert
+        self.assertEqual(actual, expected)
+
+    def test_when_constructed_with_seeded_rng_then_weights_match_uniform_draws(
+            self):
+        # Arrange
+        rng = random.Random(42)
+        expected = [rng.uniform(-1, 1), rng.uniform(-1, 1)]
+
+        # Act
+        actual = [w.data for w in Neuron(2, rng=random.Random(42)).w]
+
+        # Assert
+        self.assertEqual(actual, expected)
+
+    def test_when_constructed_with_seeded_rng_then_bias_matches_next_uniform_draw(
+            self):
+        # Arrange
+        rng = random.Random(42)
+        rng.uniform(-1, 1)
+        rng.uniform(-1, 1)
+        expected = rng.uniform(-1, 1)
+
+        # Act
+        actual = Neuron(2, rng=random.Random(42)).b.data
+
+        # Assert
+        self.assertEqual(actual, expected)
+
 #
 # class TestNeuronCall(unittest.TestCase):
 #
