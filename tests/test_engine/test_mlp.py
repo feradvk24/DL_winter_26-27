@@ -71,30 +71,30 @@ class TestNeuronCall(unittest.TestCase):
         self.assertIsInstance(actual, Value)
 
 
-# class TestNeuronParameters(unittest.TestCase):
-#
-#     def test_when_parameters_called_then_returns_weights_then_bias(self):
-#         # Arrange
-#         neuron = Neuron(2)
-#         expected = [*neuron.w, neuron.b]
-#
-#         # Act
-#         actual = neuron.parameters()
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
-#     def test_when_parameters_called_then_count_matches_inputs_plus_bias(self):
-#         # Arrange
-#         neuron = Neuron(5)
-#         expected = 6
-#
-#         # Act
-#         actual = len(neuron.parameters())
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
+class TestNeuronParameters(unittest.TestCase):
+
+    def test_when_parameters_called_then_returns_weights_then_bias(self):
+        # Arrange
+        neuron = Neuron(2)
+        expected = [*neuron.w, neuron.b]
+
+        # Act
+        actual = neuron.parameters()
+
+        # Assert
+        self.assertEqual(actual, expected)
+
+    def test_when_parameters_called_then_count_matches_inputs_plus_bias(self):
+        # Arrange
+        neuron = Neuron(5)
+        expected = 6
+
+        # Act
+        actual = len(neuron.parameters())
+
+        # Assert
+        self.assertEqual(actual, expected)
+
 #
 # class TestLayerInit(unittest.TestCase):
 #
