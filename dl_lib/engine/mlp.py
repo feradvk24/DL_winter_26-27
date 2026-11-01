@@ -17,3 +17,12 @@ class Neuron:
 
     def parameters(self) -> list[Value]:
         return self.w + [self.b]
+
+
+class Layer:
+    def __init__(self, n_inputs: int, n_outputs: int, rng: random.Random | None = None):
+        neuron_rng = rng if rng else random.Random(42)
+        self.neurons = [Neuron(n_inputs=n_inputs, rng=neuron_rng) for _ in range(n_outputs)]
+
+    def __call__(self, inputs: list[Value]) -> list[Value]:
+        return [neuron(inputs) for neuron in self.neurons]
