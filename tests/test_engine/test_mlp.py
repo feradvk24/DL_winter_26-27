@@ -44,33 +44,33 @@ class TestNeuronInit(unittest.TestCase):
         # Assert
         self.assertEqual(actual, expected)
 
-#
-# class TestNeuronCall(unittest.TestCase):
-#
-#     def test_when_called_then_output_matches_hand_calculation(self):
-#         # Arrange
-#         neuron = Neuron(2, rng=random.Random(42))
-#         x = [Value(1.0), Value(2.0)]
-#         expected = -0.968717830476061
-#
-#         # Act
-#         actual = neuron(x).data
-#
-#         # Assert
-#         self.assertAlmostEqual(actual, expected)
-#
-#     def test_when_called_then_output_is_a_value(self):
-#         # Arrange
-#         neuron = Neuron(2)
-#         x = [Value(1.0), Value(2.0)]
-#
-#         # Act
-#         actual = neuron(x)
-#
-#         # Assert
-#         self.assertIsInstance(actual, Value)
-#
-#
+
+class TestNeuronCall(unittest.TestCase):
+
+    def test_when_called_then_output_matches_hand_calculation(self):
+        # Arrange
+        neuron = Neuron(2, rng=random.Random(42))
+        x = [Value(1.0), Value(2.0)]
+        expected = -0.968717830476061
+
+        # Act
+        actual = neuron(x).data
+
+        # Assert
+        self.assertAlmostEqual(actual, expected)
+
+    def test_when_called_then_output_is_a_value(self):
+        # Arrange
+        neuron = Neuron(2)
+        x = [Value(1.0), Value(2.0)]
+
+        # Act
+        actual = neuron(x)
+
+        # Assert
+        self.assertIsInstance(actual, Value)
+
+
 # class TestNeuronParameters(unittest.TestCase):
 #
 #     def test_when_parameters_called_then_returns_weights_then_bias(self):
