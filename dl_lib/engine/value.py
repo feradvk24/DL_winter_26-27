@@ -111,3 +111,12 @@ class Value:
 
         out._backward = _backward
         return out
+
+    def exp(self) -> "Value":
+        out = Value(data=math.exp(self.data), _prev={self}, _op="exp")
+
+        def _backward():
+            self.grad += out.data * out.grad
+
+        out._backward = _backward
+        return out

@@ -336,30 +336,30 @@ class TestTrueDiv(unittest.TestCase):
 
         # Assert
         self.assertEqual(actual, expected)
-#
-#
-# class TestExp(unittest.TestCase):
-#
-#     def test_when_called_then_data_matches_hand_calculation(self):
-#         # Arrange
-#         a = Value(0.0)
-#         expected = 1.0
-#
-#         # Act
-#         actual = a.exp().data
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
-#     def test_when_backward_called_then_operand_gradient_equals_its_own_result(
-#             self):
-#         # Arrange
-#         a = Value(2.0)
-#         out = a.exp()
-#         expected = out.data
-#
-#         # Act
-#         out.backward()
-#
-#         # Assert
-#         self.assertAlmostEqual(a.grad, expected)
+
+
+class TestExp(unittest.TestCase):
+
+    def test_when_called_then_data_matches_hand_calculation(self):
+        # Arrange
+        a = Value(0.0)
+        expected = 1.0
+
+        # Act
+        actual = a.exp().data
+
+        # Assert
+        self.assertEqual(actual, expected)
+
+    def test_when_backward_called_then_operand_gradient_equals_its_own_result(
+            self):
+        # Arrange
+        a = Value(2.0)
+        out = a.exp()
+        expected = out.data
+
+        # Act
+        out.backward()
+
+        # Assert
+        self.assertAlmostEqual(a.grad, expected)
