@@ -208,36 +208,36 @@ class TestMLPInit(unittest.TestCase):
         # Assert
         self.assertEqual(actual, expected)
 
-#
-# class TestMLPCall(unittest.TestCase):
-#
-#     def test_when_called_with_multi_neuron_output_layer_then_returns_a_list(
-#             self):
-#         # Arrange
-#         mlp = MLP(3, [4, 2])
-#         x = [Value(1.0), Value(2.0), Value(3.0)]
-#         expected = 2
-#
-#         # Act
-#         actual = mlp(x)
-#
-#         # Assert
-#         self.assertIsInstance(actual, list)
-#         self.assertEqual(len(actual), expected)
-#
-#     def test_when_called_with_single_neuron_output_layer_then_returns_a_bare_value(
-#             self):
-#         # Arrange
-#         mlp = MLP(3, [4, 1])
-#         x = [Value(1.0), Value(2.0), Value(3.0)]
-#
-#         # Act
-#         actual = mlp(x)
-#
-#         # Assert
-#         self.assertIsInstance(actual, Value)
-#
-#
+
+class TestMLPCall(unittest.TestCase):
+
+    def test_when_called_with_multi_neuron_output_layer_then_returns_a_list(
+            self):
+        # Arrange
+        mlp = MLP(3, [4, 2])
+        x = [Value(1.0), Value(2.0), Value(3.0)]
+        expected = 2
+
+        # Act
+        actual = mlp(x)
+
+        # Assert
+        self.assertIsInstance(actual, list)
+        self.assertEqual(len(actual), expected)
+
+    def test_when_called_with_single_neuron_output_layer_then_returns_a_bare_value(
+            self):
+        # Arrange
+        mlp = MLP(3, [4, 1])
+        x = [Value(1.0), Value(2.0), Value(3.0)]
+
+        # Act
+        actual = mlp(x)
+
+        # Assert
+        self.assertIsInstance(actual, Value)
+
+
 # class TestMLPParameters(unittest.TestCase):
 #
 #     def test_when_parameters_called_then_returns_parameters_from_every_layer(

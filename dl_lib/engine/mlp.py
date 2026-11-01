@@ -50,3 +50,15 @@ class MLP:
             )
             self.layers.append(layer)
             current_inputs = output_size
+
+
+    def __call__(self, inputs: list[Value]) ->  Value | list[Value]:
+        outputs = inputs
+
+        for layer in self.layers:
+            outputs = layer(outputs)
+
+        if len(outputs) == 1:
+            return outputs[0]
+
+        return outputs
