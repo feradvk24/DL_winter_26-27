@@ -238,28 +238,28 @@ class TestMLPCall(unittest.TestCase):
         self.assertIsInstance(actual, Value)
 
 
-# class TestMLPParameters(unittest.TestCase):
-#
-#     def test_when_parameters_called_then_returns_parameters_from_every_layer(
-#             self):
-#         # Arrange
-#         mlp = MLP(3, [4, 1])
-#         expected = [*mlp.layers[0].parameters(), *mlp.layers[1].parameters()]
-#
-#         # Act
-#         actual = mlp.parameters()
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
-#
-#     def test_when_parameters_called_then_count_matches_sum_of_layer_counts(
-#             self):
-#         # Arrange
-#         mlp = MLP(3, [4, 4, 1])
-#         expected = sum(len(layer.parameters()) for layer in mlp.layers)
-#
-#         # Act
-#         actual = len(mlp.parameters())
-#
-#         # Assert
-#         self.assertEqual(actual, expected)
+class TestMLPParameters(unittest.TestCase):
+
+    def test_when_parameters_called_then_returns_parameters_from_every_layer(
+            self):
+        # Arrange
+        mlp = MLP(3, [4, 1])
+        expected = [*mlp.layers[0].parameters(), *mlp.layers[1].parameters()]
+
+        # Act
+        actual = mlp.parameters()
+
+        # Assert
+        self.assertEqual(actual, expected)
+
+    def test_when_parameters_called_then_count_matches_sum_of_layer_counts(
+            self):
+        # Arrange
+        mlp = MLP(3, [4, 4, 1])
+        expected = sum(len(layer.parameters()) for layer in mlp.layers)
+
+        # Act
+        actual = len(mlp.parameters())
+
+        # Assert
+        self.assertEqual(actual, expected)

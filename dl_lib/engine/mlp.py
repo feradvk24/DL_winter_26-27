@@ -51,7 +51,6 @@ class MLP:
             self.layers.append(layer)
             current_inputs = output_size
 
-
     def __call__(self, inputs: list[Value]) ->  Value | list[Value]:
         outputs = inputs
 
@@ -62,3 +61,10 @@ class MLP:
             return outputs[0]
 
         return outputs
+
+    def parameters(self):
+        return [
+            parameter
+            for layer in self.layers
+            for parameter in layer.parameters()
+        ]
