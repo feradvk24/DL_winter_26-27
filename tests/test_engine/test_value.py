@@ -239,47 +239,47 @@ class TestBackward(unittest.TestCase):
         # Assert
         self.assertEqual(c.grad, expected)
 
-#     def test_when_called_on_product_of_distinct_values_then_each_operand_gets_the_others_data(
-#         self, ):
-#         # Arrange
-#         a = Value(2.0)
-#         b = Value(-3.0)
-#         c = a * b
-#         expected_a_grad = -3.0
-#         expected_b_grad = 2.0
+    def test_when_called_on_product_of_distinct_values_then_each_operand_gets_the_others_data(
+        self, ):
+        # Arrange
+        a = Value(2.0)
+        b = Value(-3.0)
+        c = a * b
+        expected_a_grad = -3.0
+        expected_b_grad = 2.0
 
-#         # Act
-#         c.backward()
+        # Act
+        c.backward()
 
-#         # Assert
-#         self.assertEqual(a.grad, expected_a_grad)
-#         self.assertEqual(b.grad, expected_b_grad)
+        # Assert
+        self.assertEqual(a.grad, expected_a_grad)
+        self.assertEqual(b.grad, expected_b_grad)
 
-#     def test_when_called_on_tanh_then_operand_gets_the_local_tanh_derivative(
-#             self):
-#         # Arrange
-#         a = Value(0.0)
-#         t = a.tanh()
-#         expected = 1.0
+    def test_when_called_on_tanh_then_operand_gets_the_local_tanh_derivative(
+            self):
+        # Arrange
+        a = Value(0.0)
+        t = a.tanh()
+        expected = 1.0
 
-#         # Act
-#         t.backward()
+        # Act
+        t.backward()
 
-#         # Assert
-#         self.assertAlmostEqual(a.grad, expected)
+        # Assert
+        self.assertAlmostEqual(a.grad, expected)
 
-#     def test_when_value_is_reused_then_its_gradient_accumulates_across_every_use(
-#             self):
-#         # Arrange
-#         a = Value(3.0)
-#         b = a + a
-#         expected = 2.0
+    def test_when_value_is_reused_then_its_gradient_accumulates_across_every_use(
+            self):
+        # Arrange
+        a = Value(3.0)
+        b = a + a
+        expected = 2.0
 
-#         # Act
-#         b.backward()
+        # Act
+        b.backward()
 
-#         # Assert
-#         self.assertEqual(a.grad, expected)
+        # Assert
+        self.assertEqual(a.grad, expected)
 
 #
 # class TestPow(unittest.TestCase):

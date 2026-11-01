@@ -53,15 +53,33 @@ class Value:
 
     def __mul__(self, other):
         if isinstance(other, (int, float)):
-            return Value(data=(self.data * other), _prev={self}, _op="*")
+            out = Value(data=(self.data * other), _prev={self}, _op="*")
+
+            def _backward():
+                self.grad += other * out.grad
+
         elif isinstance(other, Value):
-            return Value(data=(self.data * other.data), _prev={self, other}, _op="*")
+            out = Value(data=(self.data * other.data), _prev={self, other}, _op="*")
+
+            def _backward():
+                self.grad += other.data * out.grad
+                other.grad += self.data * out.grad
+
         else:
             return NotImplemented
+
+        out._backward = _backward
+        return out
 
     def __rmul__(self, other):
         return self * other
 
     def tanh(self) -> "Value":
-        return Value(data=math.tanh(self.data), _prev={self}, _op="tanh")
+        out = Value(data=math.tanh(self.data), _prev={self}, _op="tanh")
+
+        def _backward():
+            self.grad += (1.0 - out.data**2) * out.grad
+
+        out._backward = _backward
+        return out
 
