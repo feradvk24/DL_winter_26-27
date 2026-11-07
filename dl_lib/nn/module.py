@@ -11,7 +11,7 @@ class Module(ABC):
         pass
 
     def __call__(self, x: torch.Tensor):
-        self.forward(x)
+        return self.forward(x)
 
     def train(self) -> 'Module':
         self.training = True
@@ -20,3 +20,6 @@ class Module(ABC):
     def eval(self) -> 'Module':
         self.training = False
         return self
+
+    def parameters(self) -> list:
+        return []
