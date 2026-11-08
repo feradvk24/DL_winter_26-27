@@ -3,7 +3,7 @@ import unittest
 import torch
 
 # from dl_lib.nn.activations import LeakyReLU, ReLU, Sigmoid, Tanh
-from dl_lib.nn.activations import Sigmoid, Tanh
+from dl_lib.nn.activations import Sigmoid, Tanh, ReLU
 
 
 class TestSigmoidCall(unittest.TestCase):
@@ -58,30 +58,30 @@ class TestTanhCall(unittest.TestCase):
         self.assertTrue(torch.allclose(actual, expected))
 
 
-# class TestReLUCall(unittest.TestCase):
-#     def test_when_input_has_negative_values_then_zeroes_them_out(self):
-#         # Arrange
-#         relu = ReLU()
-#         x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
-#         expected = torch.tensor([0.0, 0.0, 0.0, 1.0, 2.0])
+class TestReLUCall(unittest.TestCase):
+    def test_when_input_has_negative_values_then_zeroes_them_out(self):
+        # Arrange
+        relu = ReLU()
+        x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
+        expected = torch.tensor([0.0, 0.0, 0.0, 1.0, 2.0])
 
-#         # Act
-#         actual = relu(x)
+        # Act
+        actual = relu(x)
 
-#         # Assert
-#         self.assertTrue(torch.equal(actual, expected))
+        # Assert
+        self.assertTrue(torch.equal(actual, expected))
 
-#     def test_when_input_is_all_non_negative_then_leaves_it_unchanged(self):
-#         # Arrange
-#         relu = ReLU()
-#         x = torch.tensor([0.0, 1.0, 2.0])
-#         expected = torch.tensor([0.0, 1.0, 2.0])
+    def test_when_input_is_all_non_negative_then_leaves_it_unchanged(self):
+        # Arrange
+        relu = ReLU()
+        x = torch.tensor([0.0, 1.0, 2.0])
+        expected = torch.tensor([0.0, 1.0, 2.0])
 
-#         # Act
-#         actual = relu(x)
+        # Act
+        actual = relu(x)
 
-#         # Assert
-#         self.assertTrue(torch.equal(actual, expected))
+        # Assert
+        self.assertTrue(torch.equal(actual, expected))
 
 
 # class TestLeakyReLUInit(unittest.TestCase):
