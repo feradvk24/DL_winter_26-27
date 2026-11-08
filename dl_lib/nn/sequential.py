@@ -21,3 +21,15 @@ class Sequential(Module):
 
     def insert(self, index: int, module: Module) -> None:
         self.modules.insert(index, module)
+
+    def train(self) -> "Sequential":
+        super().train()
+        for module in self.modules:
+            module.train()
+        return self
+
+    def eval(self) -> "Sequential":
+        super().eval()
+        for module in self.modules:
+            module.eval()
+        return self

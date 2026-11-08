@@ -156,69 +156,69 @@ class TestInsert(unittest.TestCase):
 #         # Assert
 #         self.assertEqual(actual, expected)
 
-#     def test_when_no_module_owns_parameters_then_returns_empty_list(self):
-#         # Arrange
-#         sequential = Sequential(ReLU(), Tanh())
-#         expected = []
+    def test_when_no_module_owns_parameters_then_returns_empty_list(self):
+        # Arrange
+        sequential = Sequential(ReLU(), Tanh())
+        expected = []
 
-#         # Act
-#         actual = sequential.parameters()
+        # Act
+        actual = sequential.parameters()
 
-#         # Assert
-#         self.assertEqual(actual, expected)
-
-
-# class TestTrain(unittest.TestCase):
-#     def test_when_called_then_sets_every_module_to_training_mode(self):
-#         # Arrange
-#         relu, tanh = ReLU(), Tanh()
-#         sequential = Sequential(relu, tanh)
-#         sequential.eval()
-
-#         # Act
-#         sequential.train()
-
-#         # Assert
-#         self.assertTrue(sequential.training)
-#         self.assertTrue(relu.training)
-#         self.assertTrue(tanh.training)
-
-#     def test_when_nested_then_propagates_into_the_inner_sequential(self):
-#         # Arrange
-#         inner = Sequential(ReLU())
-#         outer = Sequential(inner, Tanh())
-#         outer.eval()
-
-#         # Act
-#         outer.train()
-
-#         # Assert
-#         self.assertTrue(inner.training)
-#         self.assertTrue(inner.modules[0].training)
+        # Assert
+        self.assertEqual(actual, expected)
 
 
-# class TestEval(unittest.TestCase):
-#     def test_when_called_then_sets_every_module_to_evaluation_mode(self):
-#         # Arrange
-#         relu, tanh = ReLU(), Tanh()
-#         sequential = Sequential(relu, tanh)
+class TestTrain(unittest.TestCase):
+    def test_when_called_then_sets_every_module_to_training_mode(self):
+        # Arrange
+        relu, tanh = ReLU(), Tanh()
+        sequential = Sequential(relu, tanh)
+        sequential.eval()
 
-#         # Act
-#         sequential.eval()
+        # Act
+        sequential.train()
 
-#         # Assert
-#         self.assertFalse(sequential.training)
-#         self.assertFalse(relu.training)
-#         self.assertFalse(tanh.training)
+        # Assert
+        self.assertTrue(sequential.training)
+        self.assertTrue(relu.training)
+        self.assertTrue(tanh.training)
 
-#     def test_when_nested_then_propagates_into_the_inner_sequential(self):
-#         # Arrange
-#         inner = Sequential(ReLU())
-#         outer = Sequential(inner, Tanh())
+    def test_when_nested_then_propagates_into_the_inner_sequential(self):
+        # Arrange
+        inner = Sequential(ReLU())
+        outer = Sequential(inner, Tanh())
+        outer.eval()
 
-#         # Act
-#         outer.eval()
+        # Act
+        outer.train()
 
-#         # Assert
-#         self.assertFalse(inner.training)
-#         self.assertFalse(inner.modules[0].training)
+        # Assert
+        self.assertTrue(inner.training)
+        self.assertTrue(inner.modules[0].training)
+
+
+class TestEval(unittest.TestCase):
+    def test_when_called_then_sets_every_module_to_evaluation_mode(self):
+        # Arrange
+        relu, tanh = ReLU(), Tanh()
+        sequential = Sequential(relu, tanh)
+
+        # Act
+        sequential.eval()
+
+        # Assert
+        self.assertFalse(sequential.training)
+        self.assertFalse(relu.training)
+        self.assertFalse(tanh.training)
+
+    def test_when_nested_then_propagates_into_the_inner_sequential(self):
+        # Arrange
+        inner = Sequential(ReLU())
+        outer = Sequential(inner, Tanh())
+
+        # Act
+        outer.eval()
+
+        # Assert
+        self.assertFalse(inner.training)
+        self.assertFalse(inner.modules[0].training)
