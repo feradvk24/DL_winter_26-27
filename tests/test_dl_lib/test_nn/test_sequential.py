@@ -68,78 +68,78 @@ class TestForward(unittest.TestCase):
         self.assertTrue(torch.allclose(actual, expected))
 
 
-# class TestAppend(unittest.TestCase):
-#     def test_when_called_then_adds_module_to_the_end(self):
-#         # Arrange
-#         sequential = Sequential(ReLU())
-#         expected = 2
+class TestAppend(unittest.TestCase):
+    def test_when_called_then_adds_module_to_the_end(self):
+        # Arrange
+        sequential = Sequential(ReLU())
+        expected = 2
 
-#         # Act
-#         sequential.append(Tanh())
+        # Act
+        sequential.append(Tanh())
 
-#         # Assert
-#         self.assertEqual(len(sequential.modules), expected)
-#         self.assertIsInstance(sequential.modules[-1], Tanh)
+        # Assert
+        self.assertEqual(len(sequential.modules), expected)
+        self.assertIsInstance(sequential.modules[-1], Tanh)
 
-#     def test_when_called_twice_then_both_modules_are_kept_in_order(self):
-#         # Arrange
-#         sequential = Sequential(ReLU())
-#         expected = [ReLU, Tanh, Sigmoid]
+    def test_when_called_twice_then_both_modules_are_kept_in_order(self):
+        # Arrange
+        sequential = Sequential(ReLU())
+        expected = [ReLU, Tanh, Sigmoid]
 
-#         # Act
-#         sequential.append(Tanh())
-#         sequential.append(Sigmoid())
+        # Act
+        sequential.append(Tanh())
+        sequential.append(Sigmoid())
 
-#         # Assert
-#         self.assertEqual([type(module) for module in sequential.modules], expected)
-
-
-# class TestExtend(unittest.TestCase):
-#     def test_when_called_then_adds_every_module_in_order(self):
-#         # Arrange
-#         sequential = Sequential(ReLU())
-#         expected = [ReLU, Tanh, Sigmoid]
-
-#         # Act
-#         sequential.extend([Tanh(), Sigmoid()])
-
-#         # Assert
-#         self.assertEqual([type(module) for module in sequential.modules], expected)
-
-#     def test_when_extended_with_empty_list_then_modules_are_unchanged(self):
-#         # Arrange
-#         sequential = Sequential(ReLU())
-#         expected = [ReLU]
-
-#         # Act
-#         sequential.extend([])
-
-#         # Assert
-#         self.assertEqual([type(module) for module in sequential.modules], expected)
+        # Assert
+        self.assertEqual([type(module) for module in sequential.modules], expected)
 
 
-# class TestInsert(unittest.TestCase):
-#     def test_when_called_then_places_module_at_the_given_index(self):
-#         # Arrange
-#         sequential = Sequential(ReLU(), Sigmoid())
-#         expected = [ReLU, Tanh, Sigmoid]
+class TestExtend(unittest.TestCase):
+    def test_when_called_then_adds_every_module_in_order(self):
+        # Arrange
+        sequential = Sequential(ReLU())
+        expected = [ReLU, Tanh, Sigmoid]
 
-#         # Act
-#         sequential.insert(1, Tanh())
+        # Act
+        sequential.extend([Tanh(), Sigmoid()])
 
-#         # Assert
-#         self.assertEqual([type(module) for module in sequential.modules], expected)
+        # Assert
+        self.assertEqual([type(module) for module in sequential.modules], expected)
 
-#     def test_when_called_with_index_zero_then_places_module_first(self):
-#         # Arrange
-#         sequential = Sequential(ReLU(), Sigmoid())
-#         expected = [Tanh, ReLU, Sigmoid]
+    def test_when_extended_with_empty_list_then_modules_are_unchanged(self):
+        # Arrange
+        sequential = Sequential(ReLU())
+        expected = [ReLU]
 
-#         # Act
-#         sequential.insert(0, Tanh())
+        # Act
+        sequential.extend([])
 
-#         # Assert
-#         self.assertEqual([type(module) for module in sequential.modules], expected)
+        # Assert
+        self.assertEqual([type(module) for module in sequential.modules], expected)
+
+
+class TestInsert(unittest.TestCase):
+    def test_when_called_then_places_module_at_the_given_index(self):
+        # Arrange
+        sequential = Sequential(ReLU(), Sigmoid())
+        expected = [ReLU, Tanh, Sigmoid]
+
+        # Act
+        sequential.insert(1, Tanh())
+
+        # Assert
+        self.assertEqual([type(module) for module in sequential.modules], expected)
+
+    def test_when_called_with_index_zero_then_places_module_first(self):
+        # Arrange
+        sequential = Sequential(ReLU(), Sigmoid())
+        expected = [Tanh, ReLU, Sigmoid]
+
+        # Act
+        sequential.insert(0, Tanh())
+
+        # Assert
+        self.assertEqual([type(module) for module in sequential.modules], expected)
 
 
 # class TestParameters(unittest.TestCase):

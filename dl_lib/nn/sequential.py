@@ -12,3 +12,12 @@ class Sequential(Module):
             x = module(x)
 
         return x
+
+    def append(self, module: Module) -> None:
+        self.modules.append(module)
+
+    def extend(self, modules: list[Module]) -> None:
+        self.modules.extend(modules)
+
+    def insert(self, index: int, module: Module) -> None:
+        self.modules.insert(index, module)
