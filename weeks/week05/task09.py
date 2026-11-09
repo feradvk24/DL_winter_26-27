@@ -8,9 +8,11 @@ class _DoubleModule(Module):
         return x * 2.0
 
 
-def main() -> None:
+def main() -> int:
     double = _DoubleModule()
     x = torch.tensor([1.0, 2.0, 3.0])
 
     print("x =", x)
     print("double(x) =", double(x))
+
+    return 0

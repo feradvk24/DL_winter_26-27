@@ -17,10 +17,12 @@ class _Affine(Module):
         return [self.weight, self.bias]
 
 
-def main() -> None:
+def main() -> int:
     sequential = Sequential(_Affine(3, 4), ReLU(), _Affine(4, 2))
     parameters = sequential.parameters()
 
     print("number of learnable tensors =", len(parameters))
     for index, parameter in enumerate(parameters):
         print(f"params[{index}].shape = {tuple(parameter.shape)}")
+
+    return 0
