@@ -21,5 +21,5 @@ class Module(ABC):
         self.training = False
         return self
 
-    def parameters(self) -> list:
+    def parameters(self) -> list[torch.Tensor]:
         return []

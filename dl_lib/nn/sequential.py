@@ -22,6 +22,13 @@ class Sequential(Module):
     def insert(self, index: int, module: Module) -> None:
         self.modules.insert(index, module)
 
+    def parameters(self) -> list[torch.Tensor]:
+        return [
+            parameter
+            for module in self.modules
+            for parameter in module.parameters()
+        ]
+
     def train(self) -> "Sequential":
         super().train()
         for module in self.modules:
